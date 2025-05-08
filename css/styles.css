@@ -1,0 +1,654 @@
+/* Importação de Fontes */
+@font-face {
+    font-family: 'Articulat CF';
+    src: url('../fontes/Articulat/ArticulatCF-Normal.ttf') format('truetype'),
+         url('../fontes/Articulat/ArticulatCF-Normal.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Articulat CF';
+    src: url('../fontes/Articulat/ArticulatCF-Bold.ttf') format('truetype'),
+         url('../fontes/Articulat/ArticulatCF-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Articulat CF Medium';
+    src: url('../fontes/Articulat/ArticulatCF-Medium.ttf') format('truetype'),
+         url('../fontes/Articulat/ArticulatCF-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../fontes/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../fontes/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Playfair Display SemiBold';
+    src: url('../fontes/Playfair_Display/static/PlayfairDisplay-SemiBoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Articulat CF', Arial, sans-serif;
+    line-height: 1.6;
+    color: #0a1232;
+    background-color: #E0E3DF;
+    overflow-x: hidden;
+    font-size: 18px; /* Tamanho base da fonte aumentado */
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Animações */
+.animate-fade-in {
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.animate-slide-in {
+    animation: slideIn 0.8s ease forwards;
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+/* Animação para o footer */
+.hidden-footer {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.hidden-footer.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animação para texto */
+.hidden-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+    transition-delay: 0.4s;
+}
+
+.hidden-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animação para logos */
+.hidden-logos {
+    opacity: 0;
+    transition: all 0.6s ease;
+    transition-delay: 0.8s;
+}
+
+.hidden-logos.show {
+    opacity: 1;
+}
+
+/* Slider infinito para logos */
+@keyframes slideLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.logo-slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto 0; /* Aumentei o margin-top para 40px para distanciar do texto */
+}
+
+/* Efeito de degradê nos cantos */
+.logo-slider:before,
+.logo-slider:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 80px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.logo-slider:before {
+    left: 0;
+    background: linear-gradient(to right, #000B39 0%, rgba(0, 11, 57, 0) 100%);
+}
+
+.logo-slider:after {
+    right: 0;
+    background: linear-gradient(to left, #000B39 0%, rgba(0, 11, 57, 0) 100%);
+}
+
+.logo-slider-track {
+    display: flex;
+    width: fit-content;
+    animation: slideLeft 30s linear infinite; /* Reduzida a velocidade de 15s para 30s */
+}
+
+.logo-slide {
+    width: 200px; /* Aumentado de 180px para 200px */
+    height: 130px; /* Aumentado de 100px para 130px */
+    margin: 0 30px;
+    flex-shrink: 0;
+    filter: brightness(1.1); /* Aumenta levemente o brilho para melhorar a visibilidade dos logos brancos */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Navegação */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background-color: #E0E3DF;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #000B39;
+    font-size: 22px; /* Aumentado de 18px para 22px */
+    font-family: 'Playfair Display SemiBold', serif;
+    font-weight: 600;
+    font-style: italic;
+    transition: all 0.3s ease;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+    text-decoration: underline;
+}
+
+/* Seção Principal */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.placeholder-image {
+    width: 100%;
+    max-width: 800px; /* Aumentado de 700px para 800px */
+    height: 450px; /* Aumentado de 400px para 450px */
+    background-color: #e0e0e0;
+    margin-bottom: 40px;
+}
+
+.hero-text {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 24px; /* Aumentado de 22px para 24px */
+    line-height: 1.5;
+    font-family: 'Articulat CF Medium', sans-serif;
+    color: #000B39;
+}
+
+/* Seção Azul */
+.blue-section {
+    background-color: #000B39;
+    padding: 50px 20px 70px; /* Mais padding na parte inferior e menos na superior */
+    color: #C9E165;
+}
+
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -10px; /* Move o conteúdo um pouco para cima */
+}
+
+.section-text {
+    font-size: 26px; /* Aumentado de 22px para 26px */
+    margin-bottom: 50px; /* Aumentado de 30px para 50px para criar mais espaço */
+    font-family: 'Articulat CF Medium', sans-serif;
+}
+
+.italic {
+    font-style: italic;
+    font-family: 'Playfair Display SemiBold', serif;
+    font-weight: 600;
+}
+
+/* Removido .partners e .partner-logo pois foram substituídos pelo slider */
+
+/* Logos dos parceiros */
+.logo-slide.frisabor {
+    background-image: url('../Logos/white/frisabor.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-slide.mar-hotel {
+    background-image: url('../Logos/white/mar-hotel.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-slide.fricai {
+    background-image: url('../Logos/white/friçai.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-slide.ultra {
+    background-image: url('../Logos/white/ultra sorvetes.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-slide.atlanteplaza {
+    background-image: url('../Logos/white/Atlante Plaza.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-slide.summerville {
+    background-image: url('../Logos/white/Summerville.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-slide.empresa {
+    background-image: url('../Logos/white/empresa.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* Menu Hambúrguer para Mobile */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 100;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #000B39;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .main-nav ul {
+        gap: 30px;
+    }
+    
+    .hero-text {
+        font-size: 22px; /* Ajustado para telas médias */
+        padding: 0 15px;
+    }
+    
+    .placeholder-image {
+        max-width: 90%;
+        height: 400px; /* Ajustado para telas médias */
+    }
+    
+    .section-text {
+        font-size: 24px; /* Ajustado para telas médias */
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav ul {
+        gap: 20px;
+    }
+    
+    .logo-slider {
+        max-width: 90%;
+        margin: 35px auto 0; /* Ajustado para telas médias */
+    }
+    
+    .logo-slide {
+        width: 180px; /* Ajustado para telas médias */
+        height: 110px; /* Ajustado para telas médias */
+        margin: 0 25px;
+    }
+    
+    .section-text {
+        text-align: center;
+        padding: 0 15px;
+        font-size: 22px; /* Ajustado para telas menores */
+    }
+}
+
+@media (max-width: 576px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .main-nav {
+        padding: 15px 0;
+    }
+    
+    .main-nav ul {
+        position: fixed;
+        flex-direction: column;
+        background-color: #E0E3DF;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: -100%;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        transition: all 0.3s ease;
+        z-index: 90;
+    }
+    
+    .main-nav ul.active {
+        left: 0;
+    }
+    
+    .main-nav a {
+        font-size: 24px; /* Aumentado para mobile */
+    }
+    
+    .placeholder-image {
+        height: 300px; /* Aumentado para mobile */
+        max-width: 100%;
+    }
+    
+    .hero-text {
+        font-size: 20px; /* Aumentado para mobile */
+        padding: 0 20px;
+    }
+    
+    .logo-slider {
+        max-width: 100%;
+        margin: 30px auto 0; /* Ajustado para mobile */
+    }
+    
+    .logo-slide {
+        width: 150px; /* Ajustado para mobile */
+        height: 90px; /* Ajustado para mobile */
+        margin: 0 15px;
+    }
+    
+    .section-text {
+        font-size: 20px; /* Ajustado para mobile */
+    }
+    
+    .blue-section {
+        padding: 35px 15px 55px; /* Ajustado para telas pequenas, mantendo a proporção */
+    }
+}
+
+@media (max-width: 375px) {
+    .main-nav a {
+        font-size: 22px; /* Mantido um bom tamanho mesmo em telas pequenas */
+    }
+    
+    .hero-text {
+        font-size: 18px; /* Ajustado para telas muito pequenas */
+    }
+    
+    .placeholder-image {
+        height: 220px; /* Ligeiramente aumentado */
+    }
+}
+
+/* Seção de Serviços */
+.services-section {
+    padding: 80px 20px;
+    background-color: #E0E3DF;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-family: 'Playfair Display SemiBold', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 40px;
+    color: #000B39;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title h2:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #C9E165;
+    margin: 10px auto 0;
+}
+
+.services-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 11, 57, 0.1);
+    width: 100%;
+    max-width: 350px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.service-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 11, 57, 0.15);
+}
+
+.card-content {
+    padding: 30px 25px;
+}
+
+.card-icon {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(201, 225, 101, 0.2); /* Cor verde mais clara */
+    border-radius: 50%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-card h3 {
+    font-family: 'Articulat CF Medium', sans-serif;
+    font-size: 24px;
+    color: #000B39;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    font-family: 'Articulat CF', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #202B18;
+}
+
+.card-button {
+    padding: 20px 25px;
+    border-top: 1px solid rgba(0, 11, 57, 0.1);
+}
+
+.whatsapp-btn {
+    display: block;
+    background-color: #C9E165;
+    color: #000B39;
+    font-family: 'Articulat CF Medium', sans-serif;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+    background-color: #000B39;
+    color: #C9E165;
+}
+
+/* Animações para os cards */
+.hidden-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s ease;
+}
+
+.hidden-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsividade para a seção de serviços */
+@media (max-width: 992px) {
+    .services-container {
+        gap: 20px;
+    }
+    
+    .service-card {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .service-card {
+        max-width: 500px;
+        margin-bottom: 20px;
+    }
+    
+    .service-card:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .services-section {
+        padding: 50px 15px;
+    }
+    
+    .section-title h2 {
+        font-size: 32px;
+    }
+    
+    .service-card {
+        min-height: 350px;
+    }
+}
