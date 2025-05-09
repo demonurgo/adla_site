@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
+    <header id="home">
         <nav class="main-nav">
             <div class="menu-toggle">
                 <span></span>
@@ -17,16 +17,16 @@
                 <span></span>
             </div>
             <ul>
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="hero-section">
+        <section class="hero-section" id="sobre">
             <div class="placeholder-image"></div>
             <div class="hero-text">
                 <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Nullam suscipit lacinia nulla sed eleifend est luctus non Fusce sit amet ultricies est</p>
@@ -34,7 +34,7 @@
         </section>
     </main>
 
-    <section class="blue-section hidden-footer">
+    <section class="blue-section hidden-footer" id="parceiros">
         <div class="section-content">
             <p class="section-text hidden-text">Lorem ipsum dolor sit amet <span class="italic">consectetur</span></p>
             <div class="hidden-logos logo-slider">
@@ -68,45 +68,137 @@
         </div>
     </section>
 
-    <section class="services-section">
+    <section class="services-section" id="servicos">
         <div class="section-title">
             <h2>Nossos Serviços</h2>
         </div>
+        <div class="section-description">
+            <p>Escolha o plano ideal para impulsionar sua presença digital e conectar-se com seu público de forma autêntica e eficiente.</p>
+        </div>
         <div class="services-container">
-            <div class="service-card hidden-card">
+            <div class="service-card hidden-card basic-card">
                 <div class="card-content">
-                    <div class="card-icon"></div>
-                    <h3>Serviço 1</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam suscipit lacinia nulla sed eleifend.</p>
+                    <h3>Plano Essencial</h3>
+                    <div class="price">R$ 997 <span class="price-period">/mês</span></div>
+                    <ul class="service-features">
+                        <li>Gestão de 2 redes sociais</li>
+                        <li>12 posts mensais</li>
+                        <li>2 Stories por semana</li>
+                        <li>Relatório mensal</li>
+                        <li>Criação de legenda</li>
+                    </ul>
                 </div>
                 <div class="card-button">
-                    <a href="https://wa.me/?text=Olá! Gostaria de saber mais sobre o Serviço 1" target="_blank" class="whatsapp-btn">Mais informações</a>
+                    <a href="https://wa.me/?text=Olá! Gostaria de saber mais sobre o Plano Essencial" target="_blank" class="contract-btn">Contratar agora</a>
                 </div>
             </div>
             
-            <div class="service-card hidden-card">
+            <div class="service-card hidden-card intermediate-card">
                 <div class="card-content">
-                    <div class="card-icon"></div>
-                    <h3>Serviço 2</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam suscipit lacinia nulla sed eleifend.</p>
+                    <h3>Plano Avançado</h3>
+                    <div class="price">R$ 1.497 <span class="price-period">/mês</span></div>
+                    <ul class="service-features">
+                        <li>Gestão de 3 redes sociais</li>
+                        <li>20 posts mensais</li>
+                        <li>4 Stories por semana</li>
+                        <li>Relatório quinzenal</li>
+                        <li>Criação de legenda</li>
+                        <li>Suporte prioritário</li>
+                        <li>1 Reels por mês</li>
+                    </ul>
                 </div>
                 <div class="card-button">
-                    <a href="https://wa.me/?text=Olá! Gostaria de saber mais sobre o Serviço 2" target="_blank" class="whatsapp-btn">Mais informações</a>
+                    <a href="https://wa.me/?text=Olá! Gostaria de saber mais sobre o Plano Avançado" target="_blank" class="contract-btn">Contratar agora</a>
                 </div>
             </div>
             
-            <div class="service-card hidden-card">
+            <div class="service-card hidden-card premium-card">
                 <div class="card-content">
-                    <div class="card-icon"></div>
-                    <h3>Serviço 3</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam suscipit lacinia nulla sed eleifend.</p>
+                    <h3>Plano Premium</h3>
+                    <div class="price">R$ 2.497 <span class="price-period">/mês</span></div>
+                    <ul class="service-features">
+                        <li>Gestão de 4 redes sociais</li>
+                        <li>30 posts mensais</li>
+                        <li>Stories diários</li>
+                        <li>Relatório semanal</li>
+                        <li>Criação de legenda</li>
+                        <li>Suporte VIP</li>
+                        <li>4 Reels por mês</li>
+                        <li>Consultoria estratégica</li>
+                        <li>Gerenciamento de anúncios</li>
+                    </ul>
                 </div>
                 <div class="card-button">
-                    <a href="https://wa.me/?text=Olá! Gostaria de saber mais sobre o Serviço 3" target="_blank" class="whatsapp-btn">Mais informações</a>
+                    <a href="https://wa.me/?text=Olá! Gostaria de saber mais sobre o Plano Premium" target="_blank" class="contract-btn">Contratar agora</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="contact-section" id="contato">
+        <div class="section-title">
+            <h2>Contato</h2>
+        </div>
+        <div class="section-description">
+            <p>Entre em contato conosco para obter mais informações sobre nossos serviços ou agendar uma consulta personalizada.</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="phone-icon"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Telefone</h3>
+                        <p>(81) 9 9999-9999</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="email-icon"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>E-mail</h3>
+                        <p>contato@adla.com.br</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="instagram-icon"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Instagram</h3>
+                        <p>@adla.social</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <input type="text" name="name" id="name" placeholder="Nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" id="phone" placeholder="Telefone">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" id="message" rows="5" placeholder="Mensagem" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">Enviar mensagem</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Adla. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
     <script src="js/main.js"></script>
 </body>

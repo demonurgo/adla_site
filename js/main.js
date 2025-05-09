@@ -44,6 +44,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Destaca o link de navegação correspondente à seção visível
+    function highlightNavOnScroll() {
+        // Obtem a posição de rolagem atual
+        const scrollPosition = window.scrollY;
+    
+        // Seleciona todas as seções
+        const sections = document.querySelectorAll('section, header#home');
+        
+        // Verifica cada seção
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100; // offset para considerar altura do header/menu
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            // Se a posição de rolagem estiver dentro da seção atual
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                // Remove a classe active de todos os links
+                navLinks.forEach(link => link.classList.remove('active'));
+                
+                // Adiciona a classe active ao link correspondente à seção atual
+                const activeLink = document.querySelector(`.main-nav a[href="#${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
+    }
+    
+    // Adiciona o listener de scroll
+    window.addEventListener('scroll', highlightNavOnScroll);
+    
+    // Reduz o tamanho da navbar durante a rolagem
+    function shrinkNavbar() {
+        const navbar = document.querySelector('.main-nav');
+        if (window.scrollY > 100) {
+            navbar.style.padding = '10px 0';
+        } else {
+            navbar.style.padding = '20px 0';
+        }
+    }
+    
+    window.addEventListener('scroll', shrinkNavbar);
+    
+    // Executa a função no carregamento da página
+    shrinkNavbar();
+    
     // Verifica o redimensionamento da tela para gerenciar o menu
     window.addEventListener('resize', function() {
         if (window.innerWidth > 576 && mainNavUl.classList.contains('active')) {
