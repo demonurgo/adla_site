@@ -123,6 +123,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const sectionText = document.querySelector('.hidden-text');
     const logosContainer = document.querySelector('.hidden-logos');
     const serviceCards = document.querySelectorAll('.hidden-card');
+    const hiddenSections = document.querySelectorAll('.hidden-section');
+    const aboutElements = document.querySelectorAll('.hidden-about-element');
+    const statItems = document.querySelectorAll('.hidden-stat');
     
     // Função callback para quando os elementos se tornarem visíveis
     const observerCallback = (entries, observer) => {
@@ -144,6 +147,34 @@ document.addEventListener('DOMContentLoaded', function() {
     if (blueSection) observer.observe(blueSection);
     if (sectionText) observer.observe(sectionText);
     if (logosContainer) observer.observe(logosContainer);
+    
+    // Observar as seções que devem aparecer com animação
+    hiddenSections.forEach((section) => {
+        if (section) observer.observe(section);
+    });
+    
+    // Observar elementos da seção Sobre
+    aboutElements.forEach((element) => {
+        if (element) observer.observe(element);
+    });
+    
+    // Observar itens de estatísticas com delay crescente
+    statItems.forEach((stat, index) => {
+        if (stat) {
+            const statObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('show');
+                        }, 200 * index);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            statObserver.observe(stat);
+        }
+    });
     
     // Observar cada card individualmente com delay escalonado
     serviceCards.forEach((card, index) => {
