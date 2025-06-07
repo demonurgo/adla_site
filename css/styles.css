@@ -159,6 +159,9 @@
     width: 100%;
     aspect-ratio: 1/1.2;
     background-color: #e0e0e0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 11, 57, 0.1);
     position: relative;
@@ -177,12 +180,21 @@
 }
 
 .about-content h2 {
-    font-family: 'Playfair Display SemiBold', serif;
-    font-weight: 600;
-    font-style: italic;
+    font-family: 'TheSilverEditorial', serif !important;
+    font-weight: normal !important;
+    font-style: normal !important;
     font-size: 42px;
     color: #000B39;
+    letter-spacing: 2px !important; /* Espaçamento entre letras */
     margin-bottom: 25px;
+}
+
+/* Regra adicional mais específica para o título Sobre */
+.about-section .about-content h2 {
+    font-family: 'TheSilverEditorial', serif !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    letter-spacing: 2px !important;
 }
 
 .about-content p {
@@ -294,6 +306,10 @@
     
     .about-content h2 {
         font-size: 32px;
+        letter-spacing: 2px !important; /* Mantém espaçamento */
+        font-family: 'TheSilverEditorial', serif !important;
+        font-weight: normal !important;
+        font-style: normal !important;
     }
     
     .stat-number {
@@ -342,6 +358,20 @@
     font-family: 'Playfair Display SemiBold';
     src: url('../fontes/Playfair_Display/static/PlayfairDisplay-SemiBoldItalic.ttf') format('truetype');
     font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TheSilverEditorial';
+    src: url('../fontes/TheSilverEditorial/TheSilverEditorial-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TheSilverEditorial';
+    src: url('../fontes/TheSilverEditorial/TheSilverEditorial-Italic.ttf') format('truetype');
+    font-weight: normal;
     font-style: italic;
 }
 
@@ -527,7 +557,7 @@ body.menu-open {
 .main-nav ul {
     display: flex;
     list-style: none;
-    gap: 50px;
+    gap: 150px;
     margin: 0;
     padding: 0;
 }
@@ -536,9 +566,10 @@ body.menu-open {
     text-decoration: none;
     color: #000B39;
     font-size: 22px; /* Aumentado de 18px para 22px */
-    font-family: 'Playfair Display SemiBold', serif;
-    font-weight: 600;
-    font-style: italic;
+    font-family: 'TheSilverEditorial', serif;
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: 2px; /* Espaçamento entre letras */
     transition: all 0.3s ease;
 }
 
@@ -784,6 +815,10 @@ body.menu-open {
     
     .main-nav a {
         font-size: 24px; /* Aumentado para mobile */
+        font-family: 'TheSilverEditorial', serif;
+        font-weight: normal;
+        font-style: normal;
+        letter-spacing: 2px; /* Espaçamento entre letras */
     }
     
     body {
@@ -847,11 +882,12 @@ body.menu-open {
 }
 
 .section-title h2 {
-    font-family: 'Playfair Display SemiBold', serif;
-    font-weight: 600;
-    font-style: italic;
+    font-family: 'TheSilverEditorial', serif;
+    font-weight: normal;
+    font-style: normal;
     font-size: 48px;
     color: #000B39;
+    letter-spacing: 2px; /* Espaçamento entre letras */
     position: relative;
     display: inline-block;
 }
@@ -927,9 +963,11 @@ body.menu-open {
 }
 
 .service-card h3 {
-    font-family: 'Playfair Display SemiBold', serif;
+    font-family: 'TheSilverEditorial', serif;
     font-size: 26px;
-    font-style: italic;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 2px;
     color: #000B39;
     margin-bottom: 5px;
 }
@@ -988,7 +1026,10 @@ body.menu-open {
     align-items: center;
     background-color: #000B39;
     color: #fff;
-    font-family: 'Articulat CF Medium', sans-serif;
+    font-family: 'TheSilverEditorial', serif;
+    font-style: italic;
+    font-weight: normal;
+    letter-spacing: 2px;
     font-size: 18px;
     padding: 16px 24px;
     border-radius: 8px;
@@ -1052,6 +1093,10 @@ body.menu-open {
     
     .service-card h3 {
         font-size: 24px;
+        font-family: 'TheSilverEditorial', serif;
+        font-style: normal;
+        font-weight: normal;
+        letter-spacing: 2px;
     }
     
     .service-features li {
@@ -1068,6 +1113,7 @@ body.menu-open {
     
     .section-title h2 {
         font-size: 42px;
+        letter-spacing: 2px; /* Mantém espaçamento */
     }
 }
 
@@ -1085,6 +1131,10 @@ body.menu-open {
     
     .service-card h3 {
         font-size: 26px;
+        font-family: 'TheSilverEditorial', serif;
+        font-style: normal;
+        font-weight: normal;
+        letter-spacing: 2px;
     }
     
     .price {
@@ -1108,6 +1158,7 @@ body.menu-open {
     
     .section-title h2 {
         font-size: 36px;
+        letter-spacing: 2px; /* Mantém espaçamento */
     }
     
     .section-description p {
@@ -1130,6 +1181,10 @@ body.menu-open {
     .contract-btn {
         padding: 14px 20px;
         font-size: 16px;
+        font-family: 'TheSilverEditorial', serif;
+        font-style: italic;
+        font-weight: normal;
+        letter-spacing: 2px;
     }
 }
 

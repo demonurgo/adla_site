@@ -114,6 +114,9 @@
     width: 100%;
     aspect-ratio: 1/1.2;
     background-color: #e0e0e0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 11, 57, 0.1);
     position: relative;
