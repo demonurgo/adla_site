@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Verifica cada seção
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100; // offset para considerar altura do header/menu
+            const sectionTop = section.offsetTop - 60; // offset para considerar altura do header/menu
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
             
@@ -79,9 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function shrinkNavbar() {
         const navbar = document.querySelector('.main-nav');
         if (window.scrollY > 100) {
-            navbar.style.padding = '10px 0';
+            navbar.style.padding = '5px 0';
         } else {
-            navbar.style.padding = '20px 0';
+            navbar.style.padding = '10px 0';
         }
     }
     

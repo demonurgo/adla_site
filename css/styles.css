@@ -1,10 +1,10 @@
 @media (max-width: 576px) {
     body {
-        padding-top: 50px; /* Ajustado para a barra de navegação menor */
+        padding-top: 40px; /* Ajustado para a barra de navegação menor */
     }
 
     .hero-section {
-        min-height: calc(100vh - 50px);
+        min-height: calc(100vh - 40px);
     }
     
     .placeholder-image {
@@ -44,7 +44,7 @@
 
     /* Redução da altura da barra superior em mobile */
     .main-nav {
-        height: 50px;
+        height: 40px;
     }
 }/* Seção de Depoimentos */
 .testimonials-section {
@@ -390,7 +390,7 @@ body {
     background-color: #E0E3DF;
     overflow-x: hidden;
     font-size: 18px; /* Tamanho base da fonte aumentado */
-    padding-top: 70px; /* Espaço para a navbar fixa */
+    padding-top: 50px; /* Espaço para a navbar fixa reduzida */
 }
 
 body.menu-open {
@@ -543,7 +543,7 @@ body.menu-open {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    padding: 10px 0;
     background-color: #E0E3DF;
     position: fixed;
     top: 0;
@@ -565,9 +565,9 @@ body.menu-open {
 .main-nav a {
     text-decoration: none;
     color: #000B39;
-    font-size: 22px; /* Aumentado de 18px para 22px */
+    font-size: 15px; /* Aumentado de 18px para 22px */
     font-family: 'TheSilverEditorial', serif;
-    font-weight: normal;
+    font-weight: 800;
     font-style: normal;
     letter-spacing: 2px; /* Espaçamento entre letras */
     transition: all 0.3s ease;
@@ -585,7 +585,7 @@ body.menu-open {
     align-items: center;
     justify-content: center;
     max-width: 1200px;
-    min-height: calc(100vh - 70px); /* 100% da altura da viewport menos a altura da navbar */
+    min-height: calc(100vh - 50px); /* 100% da altura da viewport menos a altura da navbar */
     margin: 0 auto;
     padding: 20px;
 }
@@ -636,9 +636,9 @@ body.menu-open {
 
 .italic {
     font-style: italic;
-    font-family: 'Playfair Display SemiBold', serif;
-    font-weight: 600;
-    font-size: 110%;
+    font-family: 'TheSilverEditorial', serif;
+    font-weight: normal;
+    font-size: 100%;
     color: #C9E165;
 }
 
@@ -704,7 +704,7 @@ body.menu-open {
     cursor: pointer;
     z-index: 100;
     position: absolute;
-    top: 15px;
+    top: 8px;
     right: 20px;
 }
 
@@ -774,17 +774,17 @@ body.menu-open {
 
 @media (max-width: 768px) {
     .main-nav {
-        padding: 10px 0;
+        padding: 5px 0;
         justify-content: flex-end;
-        height: 50px;
+        height: 40px;
     }
     
     body {
-        padding-top: 50px; /* Ajustado para o header menor em mobile */
+        padding-top: 40px; /* Ajustado para o header menor em mobile */
     }
     
     .hero-section {
-        min-height: calc(100vh - 50px);
+        min-height: calc(100vh - 40px);
     }
     
     .main-nav ul {
@@ -794,7 +794,7 @@ body.menu-open {
     .menu-toggle {
         display: flex;
         margin-right: 20px;
-        top: 10px;
+        top: 5px;
     }
     
     .main-nav ul.active {
@@ -973,18 +973,20 @@ body.menu-open {
 }
 
 .price {
-    font-family: 'Articulat CF Medium', sans-serif;
-    font-size: 36px;
-    font-weight: bold;
-    color: #000B39;
+    font-family: 'Articulat CF light', sans-serif;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: lighter;
+    color: #e0e3df;
     margin-bottom: 25px;
+    margin-top: 20px;
     line-height: 1;
 }
 
 .price-period {
     font-size: 18px;
     font-weight: normal;
-    color: #000B39;
+    color: #e0e3df;
     opacity: 0.7;
 }
 
@@ -1026,8 +1028,8 @@ body.menu-open {
     align-items: center;
     background-color: #000B39;
     color: #fff;
-    font-family: 'TheSilverEditorial', serif;
-    font-style: italic;
+    font-family: 'Articulat CF', serif;
+    font-style: normal;
     font-weight: normal;
     letter-spacing: 2px;
     font-size: 18px;
@@ -1181,8 +1183,8 @@ body.menu-open {
     .contract-btn {
         padding: 14px 20px;
         font-size: 16px;
-        font-family: 'TheSilverEditorial', serif;
-        font-style: italic;
+        font-family: 'Articulat CF', serif;
+        font-style: normal;
         font-weight: normal;
         letter-spacing: 2px;
     }
