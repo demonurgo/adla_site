@@ -1,0 +1,270 @@
+/* Estilos para a seção CTA dos serviços */
+.services-cta-section {
+    text-align: center;
+    margin: 40px auto 60px;
+    max-width: 600px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(201, 225, 101, 0.05) 0%, rgba(0, 11, 57, 0.03) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(201, 225, 101, 0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ajuste para quando a seção CTA estiver na seção de contatos */
+.contact-section .services-cta-section {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(201, 225, 101, 0.1) 100%);
+    border: 1px solid rgba(201, 225, 101, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 11, 57, 0.05);
+    margin: 50px auto 60px;
+}
+
+/* Estilos para a seção CTA independente após a seção sobre */
+.cta-section {
+    padding: 80px 20px;
+    background-color: #E0E3DF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cta-section .services-cta-section {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(201, 225, 101, 0.15) 100%);
+    border: 2px solid rgba(201, 225, 101, 0.3);
+    box-shadow: 0 15px 40px rgba(0, 11, 57, 0.08);
+    margin: 0;
+    max-width: 700px;
+    padding: 50px 30px;
+}
+
+.services-cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(201, 225, 101, 0.1), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.services-subtitle {
+    font-family: 'TheSilverEditorial', serif;
+    font-size: 36px;
+    font-weight: normal;
+    font-style: normal;
+    color: #000B39;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.calendly-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #C9E165 0%, #a8c654 100%);
+    color: #000B39;
+    text-decoration: none;
+    padding: 18px 35px;
+    border-radius: 50px;
+    font-family: 'Articulat CF Medium', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 25px rgba(201, 225, 101, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.calendly-cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.calendly-cta-button:hover::before {
+    left: 100%;
+}
+
+.calendly-cta-button:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(201, 225, 101, 0.4);
+    background: linear-gradient(135deg, #d4f170 0%, #b8d05f 100%);
+    color: #000B39;
+    text-decoration: none;
+}
+
+.calendly-cta-button:active {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(201, 225, 101, 0.5);
+}
+
+.calendly-cta-button i {
+    font-size: 20px;
+    color: #000B39;
+    transition: transform 0.3s ease;
+}
+
+.calendly-cta-button:hover i {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.calendly-cta-button span {
+    position: relative;
+    z-index: 1;
+}
+
+/* Animação de entrada para os elementos CTA */
+.services-cta-section {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: ctaSectionFadeIn 1s ease 0.3s forwards;
+}
+
+@keyframes ctaSectionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade para a seção CTA */
+@media (max-width: 992px) {
+    .services-cta-section {
+        margin: 35px auto 50px;
+        padding: 35px 15px;
+    }
+    
+    .contact-section .services-cta-section {
+        margin: 30px auto 45px;
+    }
+    
+    .cta-section {
+        padding: 60px 15px;
+    }
+    
+    .cta-section .services-cta-section {
+        padding: 40px 25px;
+        max-width: 90%;
+    }
+    
+    .services-subtitle {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+    
+    .calendly-cta-button {
+        padding: 16px 30px;
+        font-size: 17px;
+        gap: 10px;
+    }
+    
+    .calendly-cta-button i {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-cta-section {
+        margin: 30px auto 40px;
+        padding: 30px 15px;
+        border-radius: 16px;
+    }
+    
+    .cta-section {
+        padding: 50px 15px;
+    }
+    
+    .cta-section .services-cta-section {
+        padding: 35px 20px;
+        max-width: 95%;
+    }
+    
+    .services-subtitle {
+        font-size: 28px;
+        margin-bottom: 18px;
+        letter-spacing: 1.5px;
+    }
+    
+    .calendly-cta-button {
+        padding: 15px 25px;
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+    
+    .calendly-cta-button i {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .services-cta-section {
+        margin: 25px auto 35px;
+        padding: 25px 15px;
+        max-width: 90%;
+    }
+    
+    .contact-section .services-cta-section {
+        margin: 30px auto 40px;
+        max-width: 95%;
+    }
+    
+    .cta-section {
+        padding: 40px 10px;
+    }
+    
+    .cta-section .services-cta-section {
+        padding: 30px 18px;
+        max-width: 100%;
+        margin: 0 10px;
+    }
+    
+    .services-subtitle {
+        font-size: 24px;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+    }
+    
+    .calendly-cta-button {
+        padding: 14px 22px;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .calendly-cta-button i {
+        font-size: 18px;
+    }
+    
+    .calendly-cta-button span {
+        font-size: 14px;
+        line-height: 1.2;
+    }
+}

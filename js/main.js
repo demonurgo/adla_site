@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const hiddenSections = document.querySelectorAll('.hidden-section');
     const aboutElements = document.querySelectorAll('.hidden-about-element');
     const statItems = document.querySelectorAll('.hidden-stat');
+    const servicesCtaSection = document.querySelector('.services-cta-section');
     
     // Função callback para quando os elementos se tornarem visíveis
     const observerCallback = (entries, observer) => {
@@ -172,6 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (blueSection) observer.observe(blueSection);
     if (sectionText) observer.observe(sectionText);
     if (logosContainer) observer.observe(logosContainer);
+    if (servicesCtaSection) observer.observe(servicesCtaSection);
     
     // Observar as seções que devem aparecer com animação
     hiddenSections.forEach((section) => {
@@ -244,3 +246,99 @@ document.addEventListener('DOMContentLoaded', function() {
     // Reconfigura o slider em caso de redimensionamento da janela
     window.addEventListener('resize', setupInfiniteSlider);
 });
+
+// Função para fazer scroll suave até a seção de planos
+function scrollToPlans() {
+    const servicosSection = document.getElementById('servicos');
+    if (servicosSection) {
+        servicosSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Inicialização das animações da seção hero
+document.addEventListener('DOMContentLoaded', function() {
+    // Observa se a hero section está visível para iniciar as animações
+    const heroSection = document.querySelector('.hero-section');
+    const heroContent = document.querySelector('.hero-text-content');
+    
+    if (heroSection && heroContent) {
+        // Força a execução das animações CSS quando a página carrega
+        setTimeout(() => {
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(30px)';
+            heroContent.style.animation = 'heroFadeIn 1.2s ease 0.5s forwards';
+        }, 100);
+    }
+    
+    // Adiciona efeito de hover adicional ao botão CTA
+    const ctaButton = document.querySelector('.hero-cta-button');
+    if (ctaButton) {
+        ctaButton.addEventListener('mouseenter', function() {
+            this.style.boxShadow = '0 15px 35px rgba(201, 225, 101, 0.4)';
+        });
+        
+        ctaButton.addEventListener('mouseleave', function() {
+            this.style.boxShadow = 'none';
+        });
+    }
+    
+    // Adiciona efeito de hover adicional ao botão do Calendly
+    const calendlyButton = document.querySelector('.calendly-cta-button');
+    if (calendlyButton) {
+        calendlyButton.addEventListener('mouseenter', function() {
+            this.style.background = 'linear-gradient(135deg, #d4f170 0%, #b8d05f 100%)';
+        });
+        
+        calendlyButton.addEventListener('mouseleave', function() {
+            this.style.background = 'linear-gradient(135deg, #C9E165 0%, #a8c654 100%)';
+        });
+        
+        // Adiciona efeito de pulsação sutil
+        setInterval(() => {
+            if (!calendlyButton.matches(':hover')) {
+                calendlyButton.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    if (!calendlyButton.matches(':hover')) {
+                        calendlyButton.style.transform = 'scale(1)';
+                    }
+                }, 300);
+            }
+        }, 4000); // Pulsa a cada 4 segundos
+    }
+});
+
+// Adiciona um pequeno delay para garantir que as animações funcionem corretamente
+window.addEventListener('load', function() {
+    const heroTextContent = document.querySelector('.hero-text-content');
+    if (heroTextContent) {
+        heroTextContent.classList.add('loaded');
+    }
+});
+
+// Função para reativar animações se necessário (para desenvolvimento)
+function resetHeroAnimations() {
+    const heroText = document.querySelector('.hero-main-text');
+    const heroButton = document.querySelector('.hero-cta-button');
+    const heroContent = document.querySelector('.hero-text-content');
+    
+    if (heroContent) {
+        heroContent.style.animation = 'none';
+        heroContent.offsetHeight; // força reflow
+        heroContent.style.animation = 'heroFadeIn 1.2s ease 0.5s forwards';
+    }
+    
+    if (heroText) {
+        heroText.style.animation = 'none';
+        heroText.offsetHeight; // força reflow
+        heroText.style.animation = 'textSlideIn 1s ease 1s forwards';
+    }
+    
+    if (heroButton) {
+        heroButton.style.animation = 'none';
+        heroButton.offsetHeight; // força reflow
+        heroButton.style.animation = 'buttonSlideIn 1s ease 1.5s forwards';
+    }
+}

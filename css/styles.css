@@ -1,10 +1,16 @@
 @media (max-width: 576px) {
     body {
-        padding-top: 50px; /* Ajustado para a navbar reduzida */
+        padding-top: 0; /* Removido padding para mobile pequeno também */
     }
 
     .hero-section {
-        min-height: calc(70vh - 50px); /* Altura ainda mais reduzida para mostrar mais da blue-section */
+        min-height: 90vh; /* Mantém 90% para mobile pequeno também */
+        background-size: cover;
+        background-position: center;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        overflow-x: hidden;
     }
     
     .placeholder-image {
@@ -16,6 +22,7 @@
     .hero-text {
         font-size: 20px; /* Aumentado para mobile */
         padding: 0 20px;
+        color: #fff; /* Texto branco para mobile */
     }
     
     .logo-slider {
@@ -199,7 +206,7 @@
 
 .about-content p {
     font-family: 'Articulat CF', sans-serif;
-    font-size: 18px;
+    font-size: 22px;
     line-height: 1.7;
     color: #202B18;
     margin-bottom: 20px;
@@ -388,9 +395,9 @@ body {
     line-height: 1.6;
     color: #0a1232;
     background-color: #E0E3DF;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Evita scroll horizontal */
     font-size: 18px; /* Tamanho base da fonte aumentado */
-    padding-top: 60px; /* Ajustado para a navbar reduzida */
+    padding-top: 0; /* Removido padding pois navbar é transparente */
 }
 
 body.menu-open {
@@ -546,14 +553,17 @@ body.menu-open {
     justify-content: center;
     align-items: center;
     padding: 6px 0; /* Altura ainda mais reduzida */
-    background-color: #fff; /* Fundo branco */
-    position: fixed;
+    background-color: rgba(0, 0, 0, 0.1); /* Fundo levemente escurecido para melhor visibilidade */
+    position: fixed; /* Navbar fixa */
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 1000; /* Z-index alto para ficar acima de tudo */
     transition: all 0.3s ease;
     min-height: 48px; /* Altura mínima ainda mais reduzida */
+    backdrop-filter: blur(10px); /* Efeito de blur sutil no fundo */
+    -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Safari */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
 }
 
 .main-nav ul {
@@ -567,7 +577,7 @@ body.menu-open {
 
 .main-nav a {
     text-decoration: none;
-    color: #000B39;
+    color: #fff; /* Texto branco */
     font-size: 15px; /* Aumentado de 18px para 22px */
     font-family: 'TheSilverEditorial', serif;
     font-weight: 800;
@@ -582,24 +592,24 @@ body.menu-open {
 /* Pill box para itens específicos */
 .main-nav a.pill-item {
     background-color: transparent;
-    color: #000B39;
+    color: #fff; /* Texto branco */
     padding: 4px 24px; /* Aumentado o padding para melhor proporção */
     border-radius: 25px;
-    border: .5px solid #000B39;
+    border: .5px solid #fff; /* Borda branca */
 }
 
 /* Hover e Active states */
 .main-nav a:hover{
-    color: #0066CC;
+    color: #C9E165; /* Verde claro do projeto */
     transform: translateY(-2px);
 }
 
 .main-nav a.pill-item:hover{
     background-color: transparent;
-    color: #0066CC;
-    border-color: #0066CC;
+    color: #C9E165; /* Verde claro do projeto */
+    border-color: #C9E165; /* Borda verde claro */
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+    box-shadow: 0 4px 12px rgba(201, 225, 101, 0.3); /* Sombra verde */
 }
 
 /* Seção Principal */
@@ -608,10 +618,65 @@ body.menu-open {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100vw; /* 100% da largura da viewport */
+    max-width: none; /* Remove a limitação de largura */
+    min-height: 90vh; /* 90% da altura da viewport */
+    margin: 0;
+    background-image: url('../images/BG Gradiente azul com blur.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-left: calc(50% - 50vw); /* Centraliza e expande para toda a largura */
+    margin-right: calc(50% - 50vw);
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+/* Overlay sutil para melhorar legibilidade (opcional) */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 11, 57, 0.1); /* Overlay azul muito sutil */
+    z-index: 1;
+}
+
+/* Degradê na parte inferior para mesclar com a seção de baixo */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px; /* Altura do degradê aumentada para transição mais suave */
+    background: linear-gradient(to bottom, 
+        transparent 0%, 
+        rgba(0, 11, 57, 0.05) 20%,
+        rgba(0, 11, 57, 0.15) 40%, 
+        rgba(0, 11, 57, 0.35) 60%, 
+        rgba(0, 11, 57, 0.65) 80%, 
+        rgba(0, 11, 57, 0.9) 95%,
+        #000B39 100%); /* Degradê mais suave e gradual */
+    z-index: 2; /* Entre o overlay base e o conteúdo */
+    pointer-events: none; /* Não interfere na interação */
+    opacity: 0.9; /* Levemente transparente para um efeito mais sutil */
+}
+
+/* Container interno para centralizar o conteúdo */
+.hero-content {
     max-width: 1200px;
-    min-height: calc(80vh - 60px); /* Reduzido para 80vh para mostrar parte da blue-section */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px; /* Padding interno para conteúdo */
+    position: relative;
+    z-index: 3; /* Fica acima de ambos os overlays */
 }
 
 .placeholder-image {
@@ -629,7 +694,7 @@ body.menu-open {
     font-size: 24px; /* Aumentado de 22px para 24px */
     line-height: 1.5;
     font-family: 'Articulat CF Medium', sans-serif;
-    color: #000B39;
+    color: #fff; /* Texto branco para contraste com o fundo azul */
 }
 
 /* Seção Azul */
@@ -733,6 +798,12 @@ body.menu-open {
     background-repeat: no-repeat;
     background-size: contain;
 }
+.logo-slide.habilite {
+    background-image: url('../Logos/white/habilite.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
 
 /* Menu Hambúrguer para Mobile */
 .menu-toggle {
@@ -746,7 +817,7 @@ body.menu-open {
     z-index: 100;
     position: absolute;
     top: 50%;
-    right: 15px;
+    right: 25px;
     transform: translateY(-50%);
 }
 
@@ -754,7 +825,7 @@ body.menu-open {
     display: block;
     height: 3px;
     width: 100%;
-    background-color: #000B39;
+    background-color: #fff; /* Ícone branco */
     border-radius: 3px;
     transition: all 0.3s ease;
 }
@@ -768,6 +839,7 @@ body.menu-open {
     .hero-text {
         font-size: 22px; /* Ajustado para telas médias */
         padding: 0 15px;
+        color: #fff; /* Texto branco para tablet */
     }
     
     .placeholder-image {
@@ -822,15 +894,24 @@ body.menu-open {
         padding: 4px 0; /* Padding ainda mais reduzido para mobile */
         justify-content: flex-end;
         min-height: 70px; /* Altura aumentada para mobile */
-        background-color: #fff; /* Fundo branco também no mobile */
+        background-color: rgba(0, 0, 0, 0.1); /* Fundo consistente para mobile */
+        backdrop-filter: blur(10px); /* Efeito blur para mobile */
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     body {
-        padding-top: 50px; /* Ajustado para a nova altura reduzida da navbar em mobile */
+        padding-top: 0; /* Removido padding para mobile também */
     }
     
     .hero-section {
-        min-height: calc(75vh - 50px); /* Altura reduzida para mostrar mais da blue-section */
+        min-height: 90vh; /* Mantém 90% para mobile também */
+        background-size: cover;
+        background-position: center;
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        overflow-x: hidden;
     }
     
     .main-nav ul {
@@ -870,11 +951,24 @@ body.menu-open {
         text-align: center; /* Centraliza o texto */
         width: 100%; /* Faz os links ocuparem toda a largura */
         max-width: 300px; /* Limita a largura máxima para melhor visual */
+        color: #000B39; /* Cor escura para contraste com fundo branco do menu */
+    }
+    
+    .main-nav a:hover {
+        color: #C9E165; /* Verde claro no hover para mobile */
+    }
+    
     .main-nav a.pill-item {
         padding: 18px 30px; /* Aumentado para ser proporcional à nova navbar */
         margin: 5px 0;
-        border: .5px solid #000B39;
+        border: .5px solid #000B39; /* Borda escura para menu mobile */
         background-color: transparent;
+        color: #000B39; /* Cor escura para menu mobile */
+    }
+    
+    .main-nav a.pill-item:hover {
+        color: #C9E165; /* Verde claro no hover */
+        border-color: #C9E165; /* Borda verde no hover */
     }
     
     .placeholder-image {
@@ -930,16 +1024,26 @@ body.menu-open {
 .section-description {
     text-align: center;
     margin-bottom: 40px;
-    max-width: 800px;
+    max-width: 900px; /* Aumentado de 800px para forçar duas linhas */
     margin-left: auto;
     margin-right: auto;
 }
 
 .section-description p {
     font-family: 'Articulat CF Medium', sans-serif;
-    font-size: 18px;
+    font-size: 25px;
     color: #000B39;
     line-height: 1.6;
+}
+
+/* Estilo específico para a descrição da seção de contato */
+.contact-section .section-description {
+    max-width: 950px; /* Largura otimizada para duas linhas */
+}
+
+.contact-section .section-description p {
+    font-size: 24px; /* Ligeiramente menor para melhor quebra de linha */
+    line-height: 1.5; /* Reduzido para compactar verticalmente */
 }
 
 .services-container {
@@ -999,7 +1103,7 @@ body.menu-open {
 
 .service-card h3 {
     font-family: 'TheSilverEditorial', serif;
-    font-size: 26px;
+    font-size: 30px;
     font-style: normal;
     font-weight: 800;
     letter-spacing: 2px;
@@ -1033,8 +1137,8 @@ body.menu-open {
 
 .service-features li {
     position: relative;
-    padding-left: 30px; /* Ajustado para acomodar os ícones */
-    margin-bottom: 15px;
+    padding-left: 40px; /* Aumentado para acomodar os ícones maiores */
+    margin-bottom: 27px; /* Aumentado o espaçamento entre itens */
     font-family: 'Articulat CF', sans-serif;
     font-size: 20px;
     line-height: 1.5;
@@ -1049,13 +1153,13 @@ body.menu-open {
 /* Estilos para os ícones Font Awesome */
 .service-features li i {
     color: #C9E165;
-    font-size: 16px;
-    margin-right: 8px;
-    width: 18px;
+    font-size: 25px; /* Aumentado de 16px para 20px */
+    margin-right: 12px; /* Aumentado de 8px para 12px */
+    width: 24px; /* Aumentado de 18px para 24px */
     text-align: center;
     position: absolute;
     left: 0;
-    top: 5px;
+    top: 3px; /* Ajustado para centralizar melhor */
     transition: all 0.3s ease;
 }
 
@@ -1151,14 +1255,15 @@ body.menu-open {
     
     .service-features li {
         font-size: 15px;
-        margin-bottom: 12px;
-        padding-left: 28px; /* Ajustado para acomodar os ícones em mobile */
+        margin-bottom: 20px; /* Aumentado de 12px para 20px */
+        padding-left: 35px; /* Aumentado para acomodar os ícones maiores em tablet */
     }
     
     /* Ajusta o tamanho dos ícones em tablets */
     .service-features li i {
-        font-size: 14px;
-        width: 16px;
+        font-size: 18px; /* Aumentado de 14px para 18px */
+        width: 20px; /* Aumentado de 16px para 20px */
+        top: 2px; /* Ajustado para centralizar */
     }
     
     .service-features li:before {
@@ -1199,13 +1304,15 @@ body.menu-open {
     
     .service-features li {
         font-size: 16px;
-        margin-bottom: 14px;
+        margin-bottom: 20px; /* Aumentado de 14px para 20px */
+        padding-left: 35px; /* Aumentado para acomodar os ícones maiores */
     }
     
-    /* Mantém o tamanho dos ícones em mobile */
+    /* Aumenta o tamanho dos ícones em mobile */
     .service-features li i {
-        font-size: 14px;
-        width: 16px;
+        font-size: 16px; /* Aumentado de 14px para 16px */
+        width: 18px; /* Aumentado de 16px para 18px */
+        top: 2px; /* Ajustado para centralizar */
     }
     
     .card-content {
@@ -1269,6 +1376,11 @@ body.menu-open {
     flex: 1;
     max-width: 400px;
     padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Mudado de space-between para flex-start */
+    gap: 20px; /* Espaço fixo entre os cards */
+    min-height: 400px; /* Altura mínima para igualar ao formulário */
 }
 
 .contact-form {
@@ -1279,31 +1391,93 @@ body.menu-open {
 .contact-item {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 0; /* Removido margin pois usará space-between */
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.95) 100%);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 11, 57, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(201, 225, 101, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(0, 11, 57, 0.15);
+    border-color: rgba(201, 225, 101, 0.4);
+}
+
+.contact-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #C9E165 0%, #000B39 100%);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.contact-item:hover::before {
+    transform: scaleX(1);
 }
 
 .contact-icon {
-    background-color: rgba(201, 225, 101, 0.2);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    background: linear-gradient(135deg, #C9E165 0%, #a8c454 100%);
+    width: 70px; /* Reduzido para melhor proporção com o card */
+    height: 70px;
+    border-radius: 16px; /* Mudado de 50% (círculo) para 16px (quadrado arredondado) */
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 20px;
+    box-shadow: 0 8px 24px rgba(201, 225, 101, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-.phone-icon, .email-icon, .instagram-icon {
-    width: 30px;
-    height: 30px;
+.contact-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.contact-item:hover .contact-icon {
+    transform: rotate(-5deg) scale(1.1);
+    box-shadow: 0 12px 32px rgba(201, 225, 101, 0.4);
+}
+
+.contact-item:hover .contact-icon::before {
+    opacity: 1;
+}
+
+.phone-icon, .email-icon, .instagram-icon, .whatsapp-icon {
+    width: 32px; /* Ajustado para o novo tamanho do ícone */
+    height: 32px;
     background-color: #000B39;
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;
+    z-index: 1;
+    position: relative;
 }
 
 .phone-icon {
     mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 12h2c0-4.97-4.03-9-9-9v2c3.87 0 7 3.13 7 7zm-4 0h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3z"/></svg>');
+}
+
+.whatsapp-icon {
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.892 3.488"/></svg>');
 }
 
 .email-icon {
@@ -1314,17 +1488,34 @@ body.menu-open {
     mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>');
 }
 
+.contact-text {
+    flex: 1;
+}
+
 .contact-text h3 {
     font-family: 'Articulat CF Medium', sans-serif;
-    font-size: 20px;
+    font-size: 20px; /* Ajustado para o novo design */
     color: #000B39;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
 }
 
 .contact-text p {
     font-family: 'Articulat CF', sans-serif;
-    font-size: 18px;
+    font-size: 18px; /* Ajustado para o novo design */
     color: #202B18;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-item:hover .contact-text h3 {
+    color: #C9E165;
+}
+
+.contact-item:hover .contact-text p {
+    color: #000B39;
 }
 
 .form-group {
@@ -1403,6 +1594,36 @@ body.menu-open {
     
     .contact-info {
         margin-bottom: 40px;
+        min-height: auto; /* Remove altura fixa em tablet */
+        gap: 18px; /* Gap ligeiramente menor para tablet */
+    }
+    
+    /* Ajustes específicos para tablets */
+    .contact-item {
+        padding: 20px;
+    }
+    
+    .contact-icon {
+        width: 65px;
+        height: 65px;
+        margin-right: 18px;
+    }
+    
+    .phone-icon, .email-icon, .instagram-icon, .whatsapp-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .contact-text h3 {
+        font-size: 19px;
+    }
+    
+    .contact-text p {
+        font-size: 17px;
+    }
+    
+    .contact-section .section-description p {
+        font-size: 22px;
     }
 }
 
@@ -1411,21 +1632,34 @@ body.menu-open {
         padding: 50px 15px;
     }
     
+    .contact-info {
+        gap: 16px; /* Gap menor para mobile - cards mais próximos */
+        min-height: auto;
+    }
+    
     .contact-item {
-        margin-bottom: 25px;
+        padding: 18px; /* Padding reduzido para mobile */
+        margin-bottom: 0; /* Usando gap do flexbox */
     }
     
     .contact-icon {
-        width: 50px;
-        height: 50px;
+        width: 60px; /* Menor que desktop mas ainda destacado */
+        height: 60px;
+        margin-right: 16px;
+        border-radius: 12px; /* Bordas menores para mobile */
+    }
+    
+    .phone-icon, .email-icon, .instagram-icon, .whatsapp-icon {
+        width: 28px; /* Proporcionalmente ajustado */
+        height: 28px;
     }
     
     .contact-text h3 {
-        font-size: 18px;
+        font-size: 18px; /* Ajustado para mobile */
     }
     
     .contact-text p {
-        font-size: 16px;
+        font-size: 16px; /* Ajustado para mobile */
     }
     
     .form-group input,
@@ -1436,5 +1670,20 @@ body.menu-open {
     .submit-btn {
         padding: 12px 20px;
         font-size: 16px;
+    }
+    
+    /* Ajuste específico da descrição para mobile */
+    .contact-section .section-description p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+    
+    /* Reduz os efeitos de hover em mobile para melhor performance */
+    .contact-item:hover {
+        transform: none;
+    }
+    
+    .contact-item:hover .contact-icon {
+        transform: scale(1.05); /* Efeito mais sutil em mobile */
     }
 }
