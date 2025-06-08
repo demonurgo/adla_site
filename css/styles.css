@@ -4,7 +4,7 @@
     }
 
     .hero-section {
-        min-height: 90vh; /* Mantém 90% para mobile pequeno também */
+        min-height: 100vh; /* Altura aumentada para 100% no mobile pequeno também */
         background-size: cover;
         background-position: center;
         width: 100vw;
@@ -147,6 +147,7 @@
 .about-section {
     padding: 100px 20px;
     background-color: #fff;
+    position: relative; /* Garantia de que o background seja aplicado */
 }
 
 .about-container {
@@ -390,14 +391,40 @@
     scroll-behavior: smooth;
 }
 
+/* Garante que toda a viewport seja azul no mobile */
+html {
+    background-color: #000B39;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+/* Ajuste adicional para garantir que não haja área branca */
+html, body {
+    background-attachment: fixed;
+    background-color: #000B39;
+}
+
+/* CSS para Safe Area Insets */
+@supports (padding: max(0px)) {
+    html {
+        padding-top: max(0px, env(safe-area-inset-top));
+    }
+    
+    body {
+        padding-top: 0;
+    }
+}
+
 body {
     font-family: 'Articulat CF', Arial, sans-serif;
     line-height: 1.6;
     color: #0a1232;
-    background-color: #E0E3DF;
+    background-color: #000B39; /* Mudado para azul para evitar área branca no mobile */
     overflow-x: hidden; /* Evita scroll horizontal */
     font-size: 18px; /* Tamanho base da fonte aumentado */
     padding-top: 0; /* Removido padding pois navbar é transparente */
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
 }
 
 body.menu-open {
@@ -564,6 +591,10 @@ body.menu-open {
     backdrop-filter: blur(10px); /* Efeito de blur sutil no fundo */
     -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Safari */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+    /* Ajustes para safe area no mobile */
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
 }
 
 .main-nav ul {
@@ -620,7 +651,8 @@ body.menu-open {
     justify-content: center;
     width: 100vw; /* 100% da largura da viewport */
     max-width: none; /* Remove a limitação de largura */
-    min-height: 90vh; /* 90% da altura da viewport */
+    min-height: 100vh; /* 100% da altura da viewport */
+    min-height: -webkit-fill-available; /* Para iOS */
     margin: 0;
     background-image: url('../images/BG Gradiente azul com blur.png');
     background-size: cover;
@@ -630,6 +662,11 @@ body.menu-open {
     margin-left: calc(50% - 50vw); /* Centraliza e expande para toda a largura */
     margin-right: calc(50% - 50vw);
     overflow-x: hidden; /* Evita scroll horizontal */
+    /* Ajustes para safe area no mobile */
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* Overlay sutil para melhorar legibilidade (opcional) */
@@ -905,7 +942,7 @@ body.menu-open {
     }
     
     .hero-section {
-        min-height: 90vh; /* Mantém 90% para mobile também */
+        min-height: 100vh; /* Mantém 100% para mobile também */
         background-size: cover;
         background-position: center;
         width: 100vw;
@@ -1003,6 +1040,7 @@ body.menu-open {
 .services-section {
     padding: 80px 20px;
     background-color: #E0E3DF;
+    position: relative; /* Garantia de que o background seja aplicado */
 }
 
 .section-title {
@@ -1361,6 +1399,7 @@ body.menu-open {
 .contact-section {
     padding: 80px 0;
     background-color: #E0E3DF;
+    position: relative; /* Garantia de que o background seja aplicado */
 }
 
 .contact-container {
