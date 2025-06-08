@@ -6,11 +6,15 @@
     /* Ajustes da logo para mobile pequeno */
     .navbar-logo {
         left: 15px; /* Posicionamento mais próximo da borda em telas pequenas */
+        top: 50%;
+        padding-top: 25px;
+        padding-left: 10px; /* Centralizado verticalmente */
+        transform: translateY(-50%);
     }
     
     .logo-image {
         height: 28px; /* Ajustado para telas pequenas */
-        margin-top: 1px;
+        margin-top: 0px; /* Removido ajuste que estava desalinhando */
     }
 
     .hero-section {
@@ -345,6 +349,34 @@ body {
 
 body.menu-open {
     overflow: hidden;
+}
+
+/* Efeito de blur no conteúdo quando o menu mobile está ativo */
+body.menu-open main,
+body.menu-open .blue-section,
+body.menu-open .services-section,
+body.menu-open .about-section,
+body.menu-open .cta-section,
+body.menu-open .contact-section,
+body.menu-open .main-footer,
+body.menu-open .testimonials-section {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+    pointer-events: none; /* Impede interação com o conteúdo borrado */
+}
+
+/* Remove o blur quando o menu não está ativo */
+body:not(.menu-open) main,
+body:not(.menu-open) .blue-section,
+body:not(.menu-open) .services-section,
+body:not(.menu-open) .about-section,
+body:not(.menu-open) .cta-section,
+body:not(.menu-open) .contact-section,
+body:not(.menu-open) .main-footer,
+body:not(.menu-open) .testimonials-section {
+    filter: none;
+    transition: filter 0.3s ease;
+    pointer-events: auto; /* Restaura interação com o conteúdo */
 }
 
 /* Animações */
@@ -808,7 +840,7 @@ body.menu-open {
     width: 30px;
     height: 21px;
     cursor: pointer;
-    z-index: 100;
+    z-index: 1002;
     position: absolute;
     top: 50%;
     right: 25px;
@@ -821,7 +853,8 @@ body.menu-open {
     width: 100%;
     background-color: #fff; /* Ícone branco */
     border-radius: 3px;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform-origin: center;
 }
 
 /* Responsividade */
@@ -906,9 +939,15 @@ body.menu-open {
     }
     
     /* Ajustes da logo para mobile */
+    .navbar-logo {
+        top: 50%; /* Centralizado verticalmente */
+        transform: translateY(-50%);
+        left: 20px;
+    }
+    
     .logo-image {
         height: 32px; /* Ajustado proporcionalmente */
-        margin-top: 1px; /* Ajuste fino para mobile */
+        margin-top: 0px; /* Removido ajuste que estava desalinhando */
     }
     
     body {
@@ -944,25 +983,41 @@ body.menu-open {
     
     .menu-toggle {
         display: flex;
-        margin-right: 20px;
-        top: 15px; /* Ajustado para a nova altura reduzida da navbar */
+        margin-right: 0px;
+        top: 50%; /* Centralizado verticalmente */
+        transform: translateY(-50%);
+        right: 20px;
     }
     
     .main-nav ul.active {
         display: flex;
         position: fixed;
         flex-direction: column;
-        background-color: #fff;
+        background-color: rgba(0, 11, 57, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         width: 100%;
         height: 100vh;
         top: 0;
         left: 0;
-        align-items: flex-start; /* Centraliza os itens */
+        align-items: flex-start;
         justify-content: center;
         gap: 50px;
-        z-index: 90;
-        animation: fadeIn 0.3s ease-in-out;
-        padding-left: 32px;; /* Remove o padding da esquerda */
+        z-index: 1000;
+        animation: slideInFromRight 0.4s ease-out;
+        padding-left: 32px;
+    }
+    
+    /* Animação de slide para o menu mobile */
+    @keyframes slideInFromRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
     }
     
     .main-nav a {
@@ -975,24 +1030,27 @@ body.menu-open {
         text-align: center; /* Centraliza o texto */
         width: 100%; /* Faz os links ocuparem toda a largura */
         max-width: 300px; /* Limita a largura máxima para melhor visual */
-        color: #000B39; /* Cor escura para contraste com fundo branco do menu */
+        color: #fff; /* Cor branca para contraste com fundo azul translúcido */
     }
     
     .main-nav a:hover {
         color: #C9E165; /* Verde claro no hover para mobile */
+        transform: translateY(-2px);
     }
     
     .main-nav a.pill-item {
         padding: 18px 30px; /* Aumentado para ser proporcional à nova navbar */
         margin: 5px 0;
-        border: .5px solid #000B39; /* Borda escura para menu mobile */
+        border: .5px solid #fff; /* Borda branca para menu mobile */
         background-color: transparent;
-        color: #000B39; /* Cor escura para menu mobile */
+        color: #fff; /* Cor branca para menu mobile */
     }
     
     .main-nav a.pill-item:hover {
         color: #C9E165; /* Verde claro no hover */
         border-color: #C9E165; /* Borda verde no hover */
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(201, 225, 101, 0.3);
     }
     
     .placeholder-image {
