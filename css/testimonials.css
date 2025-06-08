@@ -260,6 +260,24 @@
     font-size: 22px;
 }
 
+/* Estilo para o campo business */
+.testimonial-business {
+    font-family: 'Articulat CF Medium', sans-serif;
+    font-size: 13px;
+    color: #C9E165;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: block;
+    margin: 6px 0 0px 0;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.testimonial-carousel-item.center .testimonial-business {
+    font-size: 14px;
+    letter-spacing: 3px;
+}
+
 .testimonial-client-details p {
     font-family: 'Articulat CF Medium', sans-serif;
     color: #202B18;
@@ -375,6 +393,16 @@
     .testimonial-carousel-item.center .testimonial-text {
         font-size: 20px;
     }
+    
+    .testimonial-business {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+    
+    .testimonial-carousel-item.center .testimonial-business {
+        font-size: 13px;
+        letter-spacing: 2px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -436,6 +464,17 @@
     .testimonial-carousel-item.center.slide-right {
         animation: mobileSlideRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
+    
+    .testimonial-business {
+        font-size: 11px;
+        letter-spacing: 2px;
+        margin: 3px 0 5px 0;
+    }
+    
+    .testimonial-carousel-item.center .testimonial-business {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
 }
 
 @media (max-width: 576px) {
@@ -485,6 +524,17 @@
     
     .testimonial-client-details p {
         font-size: 14px;
+    }
+    
+    .testimonial-business {
+        font-size: 11px;
+        letter-spacing: 1px;
+        margin: 3px 0 5px 0;
+    }
+    
+    .testimonial-carousel-item.center .testimonial-business {
+        font-size: 12px;
+        letter-spacing: 1px;
     }
     
     .testimonial-client-icon {

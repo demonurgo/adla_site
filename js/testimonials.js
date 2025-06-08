@@ -1,39 +1,30 @@
 // Carrossel de Testimonials - ADLA Site
 class TestimonialsCarousel {
     constructor() {
-        this.currentIndex = 1; // Começa com o segundo testimonial em destaque
+        this.currentIndex = 0; // Começa com o primeiro testimonial em destaque (Juliana)
         this.isAnimating = false; // Previne múltiplas animações simultâneas
         this.direction = 'next'; // Direção da última navegação
         this.testimonials = [
             {
                 id: 1,
-                text: "É um produto super profissional com uma equipe de suporte excepcional. Mal posso esperar para ver as próximas funcionalidades.",
-                name: "Emily Peterson",
-                location: "São Paulo, SP"
+                text: "Meu Deus do céu, ficou muuuuuito melhor do que imaginei, do que planejei, do que sonheeei!!! Pode ter certeza que você SUPEROU TODAS AS MINHAS EXPECTATIVAS com TODA CERTEZA!!!! Estou EMOCIONADA essa seria a palavra! 💙🌊",
+                name: "Juliana",
+                business: "Loja de moda feminina",
+                location: "Porto de Galinhas, PE"
             },
             {
                 id: 2,
-                text: "Estamos procurando por este produto desde a criação do nosso negócio. Resultados extraordinários em pouco tempo!",
-                name: "Adrien Jacob",
-                location: "Rio de Janeiro, RJ"
+                text: "Adla, adorei teu planejamento, curti demais! Achei que foi bem executado, percebi que você se aprofundou no assunto. Você transmitiu a marca com autoridade, sabe? A gente gostou demais!",
+                name: "Renata",
+                business: "Loja de artigos de decoração",
+                location: "Recife, PE"
             },
             {
                 id: 3,
-                text: "A melhor solução para exportação e obtenção dos resultados corretos de forma completamente gratuita e eficiente.",
-                name: "Maria Silva",
-                location: "Belo Horizonte, MG"
-            },
-            {
-                id: 4,
-                text: "Serviço excepcional e recursos inovadores que transformaram completamente nosso fluxo de trabalho.",
-                name: "Carlos Santos",
-                location: "Porto Alegre, RS"
-            },
-            {
-                id: 5,
-                text: "Equipe profissional, resultados incríveis e suporte contínuo. Altamente recomendado para qualquer empresa!",
-                name: "Ana Costa",
-                location: "Salvador, BA"
+                text: "Muito eficiente! <br/>👏👏👏👏",    
+                name: "Mylene",
+                business: "Clínica de medicina ocupacional",
+                location: "Recife, PE"
             }
         ];
         
@@ -102,6 +93,7 @@ class TestimonialsCarousel {
                     </div>
                     <div class="testimonial-client-details">
                         <h4>${testimonial.name}</h4>
+                        ${testimonial.business ? `<span class="testimonial-business">${testimonial.business}</span>` : ''}
                         <p>${testimonial.location}</p>
                     </div>
                 </div>
