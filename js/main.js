@@ -72,23 +72,48 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Adiciona o listener de scroll
-    window.addEventListener('scroll', highlightNavOnScroll);
+    // O listener de scroll foi combinado com outras funções na função handleScroll
     
     // Reduz o tamanho da navbar durante a rolagem
     function shrinkNavbar() {
         const navbar = document.querySelector('.main-nav');
-        if (window.scrollY > 100) {
-            navbar.style.padding = '5px 0';
+        if (window.scrollY > 50) {
+            navbar.style.padding = '8px 0';
         } else {
-            navbar.style.padding = '10px 0';
+            navbar.style.padding = '15px 0';
         }
     }
     
-    window.addEventListener('scroll', shrinkNavbar);
+    // Controla o efeito de blur na blue-section
+    function handleBlueSection() {
+        const blueSection = document.querySelector('.blue-section');
+        const heroSection = document.querySelector('.hero-section');
+        
+        if (blueSection && heroSection) {
+            const heroHeight = heroSection.offsetHeight;
+            const scrollPosition = window.scrollY;
+            
+            // Se o scroll está em uma posição onde a blue-section está parcialmente visível
+            if (scrollPosition < heroHeight * 0.7) {
+                blueSection.classList.add('blurred');
+            } else {
+                blueSection.classList.remove('blurred');
+            }
+        }
+    }
     
-    // Executa a função no carregamento da página
+    // Combina ambas as funções de scroll
+    function handleScroll() {
+        shrinkNavbar();
+        handleBlueSection();
+        highlightNavOnScroll();
+    }
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    // Executa as funções no carregamento da página
     shrinkNavbar();
+    handleBlueSection();
     
     // Verifica o redimensionamento da tela para gerenciar o menu
     window.addEventListener('resize', function() {
