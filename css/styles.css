@@ -2,6 +2,16 @@
     body {
         padding-top: 0; /* Removido padding para mobile pequeno também */
     }
+    
+    /* Ajustes da logo para mobile pequeno */
+    .navbar-logo {
+        left: 15px; /* Posicionamento mais próximo da borda em telas pequenas */
+    }
+    
+    .logo-image {
+        height: 28px; /* Ajustado para telas pequenas */
+        margin-top: 1px;
+    }
 
     .hero-section {
         min-height: 90vh; /* Volta para 90% no mobile pequeno */
@@ -583,18 +593,69 @@ body.menu-open {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 6px 0; /* Altura ainda mais reduzida */
-    background-color: rgba(0, 0, 0, 0.1); /* Fundo levemente escurecido para melhor visibilidade */
+    padding: 12px 0; /* Padding aumentado para dar mais espaço */
+    background-color: rgba(0, 11, 57, 0.1); /* Transparência corrigida com a cor azul do projeto */
     position: fixed; /* Navbar fixa */
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000; /* Z-index alto para ficar acima de tudo */
     transition: all 0.3s ease;
-    min-height: 48px; /* Altura mínima ainda mais reduzida */
+    min-height: 64px; /* Altura mínima aumentada para acomodar melhor a logo */
     backdrop-filter: blur(10px); /* Efeito de blur sutil no fundo */
     -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Safari */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+}
+
+/* Logo da navbar - configuração padrão (mobile) */
+.navbar-logo {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    height: 100%; /* Garante que a logo tenha a altura total da navbar */
+}
+
+/* Logo da navbar - configuração para desktop */
+@media (min-width: 769px) {
+    .navbar-logo {
+        left: 80px;
+        top: 47px;
+    }
+}
+
+.logo-image {
+    height: 36px; /* Reduzido para garantir que caiba completamente */
+    width: auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: brightness(0) invert(1); /* Torna a logo branca */
+    opacity: 0.95; /* Ligeira transparência para harmonizar */
+    margin-top: 2px; /* Pequeno ajuste para centralizar melhor */
+}
+
+.logo-image:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(201, 225, 101, 0.8));
+    opacity: 1; /* Remove transparência no hover */
+    animation-play-state: paused; /* Pausa a animação durante o hover */
+}
+
+/* Animação sutil da logo */
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.02); /* Animação mais sutil */
+    }
+}
+
+.logo-image {
+    animation: logoFloat 4s ease-in-out infinite; /* Animação mais lenta e sutil */
 }
 
 .main-nav ul {
@@ -651,7 +712,7 @@ body.menu-open {
     justify-content: center;
     width: 100vw; /* 100% da largura da viewport */
     max-width: none; /* Remove a limitação de largura */
-    min-height: 90vh; /* Volta para 90% da altura da viewport */
+    min-height: 100vh; /* Volta para 90% da altura da viewport */
     margin: 0;
     background-image: url('../images/BG Gradiente azul com blur.png');
     background-size: cover;
@@ -842,7 +903,6 @@ body.menu-open {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    margin-top: 17px;
     width: 30px;
     height: 21px;
     cursor: pointer;
@@ -934,13 +994,19 @@ body.menu-open {
 
 @media (max-width: 768px) {
     .main-nav {
-        padding: 4px 0; /* Padding ainda mais reduzido para mobile */
+        padding: 8px 0; /* Padding ajustado para mobile */
         justify-content: flex-end;
-        min-height: 70px; /* Altura aumentada para mobile */
-        background-color: rgba(0, 0, 0, 0.1); /* Fundo consistente para mobile */
+        min-height: 72px; /* Altura ajustada para mobile */
+        background-color: rgba(0, 11, 57, 0.15); /* Fundo ligeiramente mais opaco para mobile */
         backdrop-filter: blur(10px); /* Efeito blur para mobile */
         -webkit-backdrop-filter: blur(10px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Ajustes da logo para mobile */
+    .logo-image {
+        height: 32px; /* Ajustado proporcionalmente */
+        margin-top: 1px; /* Ajuste fino para mobile */
     }
     
     body {

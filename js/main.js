@@ -74,13 +74,39 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // O listener de scroll foi combinado com outras funções na função handleScroll
     
-    // Reduz o tamanho da navbar durante a rolagem
+    // Reduz o tamanho da navbar durante a rolagem e ajusta transparência
     function shrinkNavbar() {
         const navbar = document.querySelector('.main-nav');
+        const logo = document.querySelector('.logo-image');
+        
         if (window.scrollY > 50) {
-            navbar.style.padding = '8px 0';
+            navbar.style.padding = '6px 0'; // Navbar menor ao scrollar
+            navbar.style.backgroundColor = 'rgba(0, 11, 57, 0.25)'; // Mais opaco ao scrollar
+            navbar.style.backdropFilter = 'blur(15px)';
+            if (logo) {
+                // Ajuste responsivo da logo durante o scroll
+                if (window.innerWidth > 768) {
+                    logo.style.height = '30px'; // Desktop
+                } else {
+                    logo.style.height = '26px'; // Mobile
+                }
+                logo.style.marginTop = '1px';
+            }
         } else {
-            navbar.style.padding = '15px 0';
+            navbar.style.padding = '12px 0';
+            navbar.style.backgroundColor = 'rgba(0, 11, 57, 0.1)'; // Mais transparente no topo
+            navbar.style.backdropFilter = 'blur(10px)';
+            if (logo) {
+                // Ajuste responsivo da logo no topo
+                if (window.innerWidth > 768) {
+                    logo.style.height = '36px'; // Desktop
+                } else if (window.innerWidth > 576) {
+                    logo.style.height = '32px'; // Tablet
+                } else {
+                    logo.style.height = '28px'; // Mobile pequeno
+                }
+                logo.style.marginTop = '2px';
+            }
         }
     }
     
@@ -254,6 +280,23 @@ function scrollToPlans() {
         servicosSection.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
+        });
+    }
+}
+
+// Função para fazer scroll suave até a home (topo da página)
+function scrollToHome() {
+    const homeSection = document.getElementById('home');
+    if (homeSection) {
+        homeSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    } else {
+        // Fallback para scroll para o topo se a seção home não for encontrada
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     }
 }
