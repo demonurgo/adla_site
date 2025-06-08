@@ -2,6 +2,8 @@
 class TestimonialsCarousel {
     constructor() {
         this.currentIndex = 1; // Começa com o segundo testimonial em destaque
+        this.isAnimating = false; // Previne múltiplas animações simultâneas
+        this.direction = 'next'; // Direção da última navegação
         this.testimonials = [
             {
                 id: 1,
@@ -168,32 +170,63 @@ class TestimonialsCarousel {
         this.setupTouchEvents();
         
         // Atualiza o carrossel quando a janela é redimensionada
+        let resizeTimeout;
         window.addEventListener('resize', () => {
-            this.updateCarousel();
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                this.updateCarousel();
+            }, 250);
         });
     }
     
     setupTouchEvents() {
         let startX = 0;
         let endX = 0;
+        let startY = 0;
+        let endY = 0;
+        let isDragging = false;
         const carousel = document.querySelector('.testimonials-carousel-inner');
         
         if (!carousel) return;
         
         carousel.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
-        });
+            startY = e.touches[0].clientY;
+            isDragging = true;
+        }, { passive: true });
+        
+        carousel.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            const deltaX = Math.abs(currentX - startX);
+            const deltaY = Math.abs(currentY - startY);
+            
+            // Se o movimento horizontal for maior que o vertical, previne scroll vertical
+            if (deltaX > deltaY && deltaX > 10) {
+                e.preventDefault();
+            }
+        }, { passive: false });
         
         carousel.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            
             endX = e.changedTouches[0].clientX;
+            endY = e.changedTouches[0].clientY;
+            isDragging = false;
             this.handleSwipe();
-        });
+        }, { passive: true });
         
         const handleSwipe = () => {
             const difference = startX - endX;
-            const threshold = 50; // Mínimo de 50px para considerar um swipe
+            const verticalDifference = Math.abs(startY - endY);
+            const threshold = 75; // Aumentado para ser mais seletivo
             
-            if (Math.abs(difference) > threshold) {
+            // Só considera swipe se o movimento horizontal for maior que o vertical
+            if (Math.abs(difference) > threshold && Math.abs(difference) > verticalDifference) {
+                if (this.isAnimating) return; // Previne swipes durante animação
+                
                 if (difference > 0) {
                     this.nextTestimonial(); // Swipe left = próximo
                 } else {
@@ -206,18 +239,27 @@ class TestimonialsCarousel {
     }
     
     nextTestimonial() {
+        if (this.isAnimating) return;
+        
+        this.direction = 'next';
         this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
-        this.updateCarousel();
+        this.updateCarouselWithAnimation();
     }
     
     prevTestimonial() {
+        if (this.isAnimating) return;
+        
+        this.direction = 'prev';
         this.currentIndex = (this.currentIndex - 1 + this.testimonials.length) % this.testimonials.length;
-        this.updateCarousel();
+        this.updateCarouselWithAnimation();
     }
     
     goToTestimonial(index) {
+        if (this.isAnimating || index === this.currentIndex) return;
+        
+        this.direction = index > this.currentIndex ? 'next' : 'prev';
         this.currentIndex = index;
-        this.updateCarousel();
+        this.updateCarouselWithAnimation();
     }
     
     updateCarousel() {
@@ -233,12 +275,94 @@ class TestimonialsCarousel {
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === this.currentIndex);
         });
+    }
+    
+    updateCarouselWithAnimation() {
+        if (this.isAnimating) return;
         
-        // Adiciona animação suave
-        carouselInner.style.opacity = '0';
+        this.isAnimating = true;
+        const carouselInner = document.querySelector('.testimonials-carousel-inner');
+        const isMobile = window.innerWidth <= 768;
+        
+        if (!carouselInner) {
+            this.isAnimating = false;
+            return;
+        }
+        
+        if (isMobile) {
+            this.animateMobileTransition();
+        } else {
+            this.animateDesktopTransition();
+        }
+    }
+    
+    animateMobileTransition() {
+        const carouselInner = document.querySelector('.testimonials-carousel-inner');
+        const currentCard = carouselInner.querySelector('.testimonial-carousel-item.center');
+        
+        if (currentCard) {
+            // Adiciona classe de saída baseada na direção
+            const exitClass = this.direction === 'next' ? 'exit-left' : 'exit-right';
+            currentCard.classList.add(exitClass);
+            
+            // Aguarda a animação de saída completar
+            setTimeout(() => {
+                this.updateCarousel();
+                
+                // Adiciona animação de entrada
+                const newCard = carouselInner.querySelector('.testimonial-carousel-item.center');
+                if (newCard) {
+                    const slideClass = this.direction === 'next' ? 'slide-left' : 'slide-right';
+                    newCard.classList.add(slideClass);
+                    
+                    // Remove as classes após a animação
+                    setTimeout(() => {
+                        newCard.classList.remove(slideClass);
+                        this.isAnimating = false;
+                    }, 600);
+                }
+            }, 300);
+        } else {
+            this.updateCarousel();
+            this.isAnimating = false;
+        }
+    }
+    
+    animateDesktopTransition() {
+        const carouselInner = document.querySelector('.testimonials-carousel-inner');
+        
+        // Primeiro atualiza o conteúdo
+        this.updateCarousel();
+        
+        // Adiciona classes de animação baseadas na direção
+        const centerCard = carouselInner.querySelector('.testimonial-carousel-item.center');
+        const sideCards = carouselInner.querySelectorAll('.testimonial-carousel-item.side');
+        
+        if (centerCard) {
+            centerCard.classList.add('sliding');
+            
+            setTimeout(() => {
+                centerCard.classList.remove('sliding');
+            }, 600);
+        }
+        
+        // Adiciona animações aos cards laterais
+        sideCards.forEach((card, index) => {
+            if (this.direction === 'next') {
+                card.classList.add(index === 0 ? 'from-left' : 'from-right');
+            } else {
+                card.classList.add(index === 0 ? 'from-right' : 'from-left');
+            }
+            
+            setTimeout(() => {
+                card.classList.remove('from-left', 'from-right');
+            }, 600);
+        });
+        
+        // Finaliza a animação
         setTimeout(() => {
-            carouselInner.style.opacity = '1';
-        }, 100);
+            this.isAnimating = false;
+        }, 600);
     }
     
     startAutoPlay(interval = 5000) {

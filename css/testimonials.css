@@ -93,8 +93,9 @@
     align-items: stretch;
     padding: 0 100px;
     gap: 40px;
-    transition: all 0.5s ease;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     min-height: 450px;
+    position: relative;
 }
 
 /* Card individual do testimonial */
@@ -103,30 +104,85 @@
     border-radius: 20px;
     padding: 60px 35px 45px;
     box-shadow: 0 10px 30px rgba(0, 11, 57, 0.1);
-    transition: all 0.5s ease;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
     min-height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    will-change: transform, opacity;
 }
 
 /* Estados dos cards: lado, centro */
 .testimonial-carousel-item.side {
     width: 320px;
-    opacity: 0.8;
-    transform: scale(0.95);
+    opacity: 0.7;
+    transform: scale(0.9) translateY(10px);
+    filter: blur(1px);
 }
 
 .testimonial-carousel-item.center {
     width: 400px;
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0px);
     background-color: #f8f9fa;
     border: 3px solid #C9E165;
     box-shadow: 0 20px 50px rgba(0, 11, 57, 0.2);
     z-index: 5;
+    filter: blur(0px);
+}
+
+/* Animação de entrada do lado esquerdo */
+.testimonial-carousel-item.side.from-left {
+    transform: scale(0.9) translateX(-50px) translateY(10px);
+    animation: slideInFromLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Animação de entrada do lado direito */
+.testimonial-carousel-item.side.from-right {
+    transform: scale(0.9) translateX(50px) translateY(10px);
+    animation: slideInFromRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Animação para o center */
+.testimonial-carousel-item.center.sliding {
+    animation: slideToCenter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: scale(0.9) translateX(-50px) translateY(10px);
+        opacity: 0.5;
+    }
+    to {
+        transform: scale(0.9) translateX(0px) translateY(10px);
+        opacity: 0.7;
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: scale(0.9) translateX(50px) translateY(10px);
+        opacity: 0.5;
+    }
+    to {
+        transform: scale(0.9) translateX(0px) translateY(10px);
+        opacity: 0.7;
+    }
+}
+
+@keyframes slideToCenter {
+    from {
+        transform: scale(0.9) translateY(10px);
+        opacity: 0.7;
+        filter: blur(1px);
+    }
+    to {
+        transform: scale(1) translateY(0px);
+        opacity: 1;
+        filter: blur(0px);
+    }
 }
 
 /* Ícone de aspas */
@@ -350,6 +406,8 @@
         padding: 0 20px;
         justify-content: center;
         min-height: 450px;
+        overflow: hidden;
+        position: relative;
     }
     
     .testimonial-carousel-item {
@@ -362,19 +420,21 @@
         max-width: 450px;
         transform: scale(1);
         border: 2px solid #C9E165;
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     
+    /* Esconde as setas de navegação no mobile */
     .carousel-nav-button {
-        width: 40px;
-        height: 40px;
+        display: none;
     }
     
-    .carousel-nav-button.prev {
-        left: 10px;
+    /* Animação de slide para mobile */
+    .testimonial-carousel-item.center.slide-left {
+        animation: mobileSlideLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
     
-    .carousel-nav-button.next {
-        right: 10px;
+    .testimonial-carousel-item.center.slide-right {
+        animation: mobileSlideRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
 }
 
@@ -440,5 +500,64 @@
     .carousel-dot {
         width: 10px;
         height: 10px;
+    }
+    
+    /* Setas escondidas também em telas muito pequenas */
+    .carousel-nav-button {
+        display: none;
+    }
+}
+
+/* Animações para mobile slide */
+@keyframes mobileSlideLeft {
+    0% {
+        transform: translateX(100%) scale(1);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes mobileSlideRight {
+    0% {
+        transform: translateX(-100%) scale(1);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animação de saída para o card atual */
+.testimonial-carousel-item.exit-left {
+    animation: exitLeft 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.testimonial-carousel-item.exit-right {
+    animation: exitRight 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes exitLeft {
+    0% {
+        transform: translateX(0%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%) scale(0.9);
+        opacity: 0;
+    }
+}
+
+@keyframes exitRight {
+    0% {
+        transform: translateX(0%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%) scale(0.9);
+        opacity: 0;
     }
 }
