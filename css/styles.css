@@ -739,13 +739,15 @@ body.menu-open {
     display: none;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 17px;
     width: 30px;
     height: 21px;
     cursor: pointer;
     z-index: 100;
     position: absolute;
-    top: 18px; /* Ajustado para a nova altura reduzida da navbar */
-    right: 20px;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
 }
 
 .menu-toggle span {
@@ -850,12 +852,12 @@ body.menu-open {
         height: 100vh;
         top: 0;
         left: 0;
-        align-items: flex-start; /* Alinha à esquerda */
+        align-items: flex-start; /* Centraliza os itens */
         justify-content: center;
-        gap: 30px;
+        gap: 50px;
         z-index: 90;
         animation: fadeIn 0.3s ease-in-out;
-        padding-left: 32px; /* Espaço da esquerda */
+        padding-left: 32px;; /* Remove o padding da esquerda */
     }
     
     .main-nav a {
@@ -865,9 +867,9 @@ body.menu-open {
         font-style: normal;
         letter-spacing: 2px; /* Espaçamento entre letras */
         padding: 15px 25px; /* Padding maior para mobile */
-    }
-    
-    /* Pill items em mobile */
+        text-align: center; /* Centraliza o texto */
+        width: 100%; /* Faz os links ocuparem toda a largura */
+        max-width: 300px; /* Limita a largura máxima para melhor visual */
     .main-nav a.pill-item {
         padding: 18px 30px; /* Aumentado para ser proporcional à nova navbar */
         margin: 5px 0;
