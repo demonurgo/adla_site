@@ -93,7 +93,8 @@
 /* Seção Sobre Mim */
 .about-section {
     padding: 100px 0;
-    background-color: #E0E3DF;
+    background-color: #fff;
+    position: relative; /* Garantia de que o background seja aplicado */
 }
 
 .about-container {
@@ -240,12 +241,26 @@
     
     .about-container {
         flex-direction: column;
-        gap: 40px;
+        gap: 30px; /* Gap menor para mobile */
     }
     
     .about-image-container,
     .about-content {
         max-width: 100%;
+    }
+    
+    /* Garante que a imagem apareça no mobile */
+    .about-image-container {
+        order: -1; /* Coloca a imagem primeiro no mobile */
+        max-width: 350px; /* Tamanho limitado para mobile */
+        margin: 0 auto; /* Centraliza a imagem */
+        display: block; /* Força exibição */
+    }
+    
+    .about-image {
+        aspect-ratio: 1/1; /* Imagem quadrada no mobile */
+        display: block; /* Força exibição */
+        visibility: visible;
     }
     
     .about-stats {
@@ -292,5 +307,25 @@
     
     .stat-number {
         font-size: 30px;
+    }
+    
+    /* Ajustes específicos da imagem para mobile pequeno */
+    .about-image-container {
+        max-width: 280px; /* Ainda menor para mobile pequeno */
+        display: block; /* Força exibição */
+        margin: 0 auto;
+    }
+    
+    .about-image {
+        display: block; /* Força exibição */
+        visibility: visible;
+    }
+    
+    .about-section {
+        padding: 60px 0; /* Padding menor para mobile pequeno */
+    }
+    
+    .about-container {
+        gap: 25px; /* Gap ainda menor */
     }
 }

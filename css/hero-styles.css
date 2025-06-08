@@ -32,7 +32,6 @@
 .hero-highlight {
     color: #C9E165;
     font-style: italic;
-   letter-spacing: 2px;
 }
 
 .hero-subtext {
@@ -177,10 +176,14 @@
     }
     
     .hero-main-text {
-        font-size: 36px;
-        line-height: 1.4;
+        font-size: 32px;
+        line-height: 1.3;
         margin-bottom: 20px;
         padding: 0;
+        /* Ajusta para quebrar corretamente em 2 linhas */
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .hero-subtext {
@@ -199,14 +202,17 @@
 
 @media (max-width: 576px) {
     .hero-main-text {
-        font-size: 28px;
-        line-height: 1.4;
+        font-size: 22px;
+        line-height: 1.5;
         margin-bottom: 18px;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .hero-subtext {
-        font-size: 14px;
-        margin-bottom: 22px;
+        font-size: 12px;
+        margin-bottom: 40px;
         letter-spacing: 1.5px;
         line-height: 1.4;
     }

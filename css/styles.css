@@ -4,7 +4,7 @@
     }
 
     .hero-section {
-        min-height: 100vh; /* Altura aumentada para 100% no mobile pequeno também */
+        min-height: 90vh; /* Volta para 90% no mobile pequeno */
         background-size: cover;
         background-position: center;
         width: 100vw;
@@ -42,11 +42,30 @@
     }
     
     .section-text {
-        font-size: 22px; /* Ajustado para mobile */
+        font-size: 18px; /* Ajustado para mobile pequeno - para ficar em 2 linhas */
+        line-height: 1.3;
+        margin-top: 0 !important; /* Remove margem negativa */
+        margin-bottom: 15px !important;
+    }
+    
+    /* Texto ainda menor para mobile pequeno */
+    .blue-section p[style*="letter-spacing: 3px"] {
+        font-size: 12px !important;
+        letter-spacing: 0.5px !important;
+        text-align: center;
+        margin-top: 0 !important; /* Remove margem superior */
+        margin-bottom: 10px !important; /* Espaçamento positivo menor para mobile pequeno */
+        line-height: 1.1;
     }
     
     .blue-section {
-        min-height: 140px; /* Altura reduzida para mobile */
+        min-height: 180px; /* Altura aumentada para mobile */
+        padding: 25px 0; /* Padding para mobile pequeno */
+    }
+    
+    .section-content {
+        padding: 0 15px;
+        gap: 12px; /* Gap menor para mobile pequeno */
     }
 
     /* Altura da barra superior em mobile - reduzida */
@@ -395,24 +414,11 @@
 html {
     background-color: #000B39;
     min-height: 100vh;
-    min-height: -webkit-fill-available;
 }
 
 /* Ajuste adicional para garantir que não haja área branca */
 html, body {
-    background-attachment: fixed;
     background-color: #000B39;
-}
-
-/* CSS para Safe Area Insets */
-@supports (padding: max(0px)) {
-    html {
-        padding-top: max(0px, env(safe-area-inset-top));
-    }
-    
-    body {
-        padding-top: 0;
-    }
 }
 
 body {
@@ -423,8 +429,6 @@ body {
     overflow-x: hidden; /* Evita scroll horizontal */
     font-size: 18px; /* Tamanho base da fonte aumentado */
     padding-top: 0; /* Removido padding pois navbar é transparente */
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
 }
 
 body.menu-open {
@@ -591,10 +595,6 @@ body.menu-open {
     backdrop-filter: blur(10px); /* Efeito de blur sutil no fundo */
     -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Safari */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
-    /* Ajustes para safe area no mobile */
-    padding-top: env(safe-area-inset-top);
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
 }
 
 .main-nav ul {
@@ -651,8 +651,7 @@ body.menu-open {
     justify-content: center;
     width: 100vw; /* 100% da largura da viewport */
     max-width: none; /* Remove a limitação de largura */
-    min-height: 100vh; /* 100% da altura da viewport */
-    min-height: -webkit-fill-available; /* Para iOS */
+    min-height: 90vh; /* Volta para 90% da altura da viewport */
     margin: 0;
     background-image: url('../images/BG Gradiente azul com blur.png');
     background-size: cover;
@@ -662,11 +661,6 @@ body.menu-open {
     margin-left: calc(50% - 50vw); /* Centraliza e expande para toda a largura */
     margin-right: calc(50% - 50vw);
     overflow-x: hidden; /* Evita scroll horizontal */
-    /* Ajustes para safe area no mobile */
-    padding-top: env(safe-area-inset-top);
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-    padding-bottom: env(safe-area-inset-bottom);
 }
 
 /* Overlay sutil para melhorar legibilidade (opcional) */
@@ -737,7 +731,7 @@ body.menu-open {
 /* Seção Azul */
 .blue-section {
     background-color: #000B39;
-    padding: 0;
+    padding: 40px 0; /* Aumentado de 0 para dar mais espaço interno */
     color: #C9E165;
     margin-top: 0;
     display: flex;
@@ -758,6 +752,7 @@ body.menu-open {
     justify-content: center;
     padding: 0 20px;
     width: 100%;
+    gap: 20px; /* Espaçamento padrão entre elementos */
 }
 
 .section-text {
@@ -920,9 +915,20 @@ body.menu-open {
     }
     
     .section-text {
+        font-size: 22px; /* Diminuído para mobile */
+        line-height: 1.3;
+        margin-top: 0 !important; /* Remove margem negativa que pode causar sobreposição */
+        margin-bottom: 20px !important;
+    }
+    
+    /* Estilo específico para o primeiro texto da blue-section no mobile */
+    .blue-section p[style*="letter-spacing: 3px"] {
+        font-size: 14px !important; /* Muito menor para ficar em uma linha */
+        letter-spacing: 1px !important;
         text-align: center;
-        padding: 0 15px;
-        font-size: 26px; /* Ajustado para telas menores */
+        margin-top: 0 !important; /* Remove margem superior */
+        margin-bottom: 15px !important; /* Espaçamento positivo para separar do texto de baixo */
+        line-height: 1.2;
     }
 }
 
@@ -942,13 +948,26 @@ body.menu-open {
     }
     
     .hero-section {
-        min-height: 100vh; /* Mantém 100% para mobile também */
+        min-height: 90vh; /* Volta para 90% em mobile */
         background-size: cover;
         background-position: center;
         width: 100vw;
         margin-left: calc(50% - 50vw);
         margin-right: calc(50% - 50vw);
         overflow-x: hidden;
+    }
+    
+    /* Ajustes específicos para a blue-section no mobile */
+    .blue-section {
+        padding: 30px 0; /* Padding reduzido para mobile */
+        min-height: auto; /* Remove altura mínima fixa */
+    }
+    
+    .section-content {
+        padding: 0 20px;
+        gap: 15px; /* Adiciona espaçamento entre elementos */
+        display: flex;
+        flex-direction: column;
     }
     
     .main-nav ul {
