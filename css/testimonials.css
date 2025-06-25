@@ -16,7 +16,7 @@
 }
 
 .testimonials-section .section-description p {
-    font-family: 'Articulat CF Medium', sans-serif;
+    font-family: 'Montserrat Medium', sans-serif;
     font-size: 23px;
     color: #6b6d6b67;
     line-height: 1.6;
@@ -205,7 +205,7 @@
 
 /* Texto do testimonial */
 .testimonial-text {
-    font-family: 'Articulat CF', serif;
+    font-family: 'Montserrat', serif;
     font-style: normal;
     font-weight: normal;
     font-size: 19px;
@@ -262,7 +262,7 @@
 
 /* Estilo para o campo business */
 .testimonial-business {
-    font-family: 'Articulat CF Medium', sans-serif;
+    font-family: 'Montserrat Medium', sans-serif;
     font-size: 13px;
     color: #C9E165;
     letter-spacing: 3px;
@@ -279,7 +279,7 @@
 }
 
 .testimonial-client-details p {
-    font-family: 'Articulat CF Medium', sans-serif;
+    font-family: 'Montserrat Medium', sans-serif;
     color: #202B18;
     font-size: 15px;
     margin: 0;
@@ -356,7 +356,7 @@
 @media (max-width: 992px) {
     .testimonials-section {
         min-height: 600px;
-        padding: 80px 15px 100px;
+        padding: 80px 15px 70px; /* Reduzido padding inferior de 100px para 70px */
     }
     
     .testimonials-section .section-title h2 {
@@ -407,7 +407,7 @@
 
 @media (max-width: 768px) {
     .testimonials-section {
-        padding: 70px 15px 90px;
+        padding: 70px 15px 60px; /* Reduzido padding inferior de 90px para 60px */
         min-height: 650px;
     }
     
@@ -479,7 +479,7 @@
 
 @media (max-width: 576px) {
     .testimonials-section {
-        padding: 60px 10px 80px;
+        padding: 60px 10px 50px; /* Reduzido padding inferior de 80px para 50px */
         min-height: 600px;
     }
     

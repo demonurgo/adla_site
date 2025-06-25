@@ -178,6 +178,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const aboutElements = document.querySelectorAll('.hidden-about-element');
     const statItems = document.querySelectorAll('.hidden-stat');
     const servicesCtaSection = document.querySelector('.services-cta-section');
+    const serviceItems = document.querySelectorAll('.hidden-service');
+    const whyChooseText = document.querySelector('.why-choose-text');
     
     // Função callback para quando os elementos se tornarem visíveis
     const observerCallback = (entries, observer) => {
@@ -200,6 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sectionText) observer.observe(sectionText);
     if (logosContainer) observer.observe(logosContainer);
     if (servicesCtaSection) observer.observe(servicesCtaSection);
+    if (whyChooseText) observer.observe(whyChooseText);
     
     // Observar as seções que devem aparecer com animação
     hiddenSections.forEach((section) => {
@@ -248,6 +251,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }, observerOptions);
             
             cardObserver.observe(card);
+        }
+    });
+    
+    // Observar cada item de serviço individualmente com delay escalonado
+    serviceItems.forEach((item, index) => {
+        if (item) {
+            // Criamos um novo observer para cada item com um delay personalizado
+            const serviceObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Adicionamos um delay crescente para cada item
+                        setTimeout(() => {
+                            entry.target.classList.add('show');
+                        }, 120 * index); // 120ms de delay para cada item
+                        
+                        // Para de observar após a animação ser acionada
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            serviceObserver.observe(item);
         }
     });
     

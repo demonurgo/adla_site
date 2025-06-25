@@ -11,14 +11,14 @@
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    gap: 60px;
+    gap: 80px;
     align-items: center;
     padding: 0 20px;
 }
 
 .about-image-container {
-    flex: 1;
-    max-width: 500px;
+    flex: 1.2;
+    max-width: 600px;
 }
 
 .about-image {
@@ -33,6 +33,9 @@
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
+    /* Desktop: altura maior para harmonia com o texto */
+    min-height: 600px;
+    max-height: 800px;
 }
 
 .about-image:hover {
@@ -42,7 +45,7 @@
 
 .about-content {
     flex: 1;
-    max-width: 600px;
+    max-width: 650px;
 }
 
 .about-content h2 {
@@ -55,7 +58,7 @@
 }
 
 .about-content p {
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     line-height: 1.7;
     color: #202B18;
@@ -87,7 +90,7 @@
 
 .stat-number {
     display: block;
-    font-family: 'Articulat CF Medium', sans-serif;
+    font-family: 'Montserrat Medium', sans-serif;
     font-size: 36px;
     font-weight: 600;
     color: #000B39;
@@ -96,7 +99,7 @@
 
 .stat-label {
     display: block;
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     color: #202B18;
 }
@@ -133,7 +136,7 @@
     
     .about-container {
         flex-direction: column;
-        gap: 30px; /* Gap menor para mobile */
+        gap: 40px;
     }
     
     .about-image-container,
@@ -141,18 +144,25 @@
         max-width: 100%;
     }
     
-    /* Garante que a imagem apareça no mobile */
+    /* Imagem fica abaixo do texto no mobile */
     .about-image-container {
-        order: -1; /* Coloca a imagem primeiro no mobile */
-        max-width: 350px; /* Tamanho limitado para mobile */
+        order: 2; /* Coloca a imagem depois do texto */
+        max-width: 400px; /* Aumentado de 320px para 400px */
         margin: 0 auto; /* Centraliza a imagem */
-        display: block; /* Força exibição */
+        display: block;
+    }
+    
+    .about-content {
+        order: 1; /* Texto fica primeiro */
     }
     
     .about-image {
-        aspect-ratio: 1/1; /* Imagem quadrada no mobile */
-        display: block; /* Força exibição */
+        aspect-ratio: 3/4; /* Aspect ratio 3:4 para mobile */
+        display: block;
         visibility: visible;
+        height: auto !important; /* Remove altura fixa do inline style */
+        min-height: 350px; /* Aumentado de 280px para 350px */
+        max-height: 450px; /* Aumentado de 320px para 450px */
     }
     
     .about-stats {
@@ -181,14 +191,25 @@
     
     /* Ajustes específicos da imagem para mobile pequeno */
     .about-image-container {
-        max-width: 280px; /* Ainda menor para mobile pequeno */
-        display: block; /* Força exibição */
+        max-width: 95%; /* Aumentado de 90% para 95% - ainda mais próximo das bordas */
+        width: 95%; /* Força a largura */
+        display: block;
         margin: 0 auto;
+        order: 2; /* Mantém a imagem abaixo do texto */
+        padding: 0 10px; /* Padding mínimo para não colar na borda */
+    }
+    
+    .about-content {
+        order: 1; /* Texto sempre primeiro */
     }
     
     .about-image {
-        display: block; /* Força exibição */
+        display: block;
         visibility: visible;
+        height: auto !important; /* Remove altura fixa do inline style */
+        min-height: 400px; /* Aumentado de 300px para 400px */
+        max-height: 500px; /* Aumentado de 400px para 500px */
+        aspect-ratio: 3/5; /* Aspect ratio 3:5 para mobile pequeno - mais vertical */
     }
     
     .about-section {

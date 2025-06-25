@@ -90,7 +90,7 @@
 
 /* Seção Sobre Mim */
 .about-section {
-    padding: 100px 20px;
+    padding: 20px 20px 100px 20px; /* Reduzido padding superior de 100px para 60px */
     background-color: #fff;
     position: relative; /* Garantia de que o background seja aplicado */
 }
@@ -130,6 +130,7 @@
 .about-content {
     flex: 1;
     max-width: 600px;
+    margin-top: 0; /* Garante que não há margem superior adicional */
 }
 
 .about-content h2 {
@@ -151,11 +152,11 @@
 }
 
 .about-content p {
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 22px;
     line-height: 1.7;
     color: #202B18;
-    margin-bottom: 20px;
+    margin-bottom: 35px; /* Aumentado de 20px para 35px para maior espaçamento entre parágrafos */
 }
 
 .about-stats {
@@ -183,7 +184,7 @@
 
 .stat-number {
     display: block;
-    font-family: 'Articulat CF Medium', sans-serif;
+    font-family: 'Montserrat Medium', sans-serif;
     font-size: 36px;
     font-weight: 600;
     color: #000B39;
@@ -192,7 +193,7 @@
 
 .stat-label {
     display: block;
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     color: #202B18;
 }
@@ -222,6 +223,10 @@
 
 /* Responsividade para as novas seções */
 @media (max-width: 992px) {
+    .about-section {
+        padding: 50px 20px 100px 20px; /* Reduzido padding superior para 50px em tablets médios */
+    }
+    
     .about-container {
         flex-direction: column;
         gap: 40px;
@@ -230,6 +235,25 @@
     .about-image-container,
     .about-content {
         max-width: 100%;
+    }
+    
+    /* Ajustes para a imagem em tablets */
+    .about-image {
+        height: auto !important; /* Remove altura fixa do inline style */
+        aspect-ratio: 1/1.2 !important; /* Mantém proporção original em tablets */
+        min-height: 400px;
+        max-height: 600px; /* Altura máxima para tablets */
+    }
+    
+    /* Organização do layout em tablets */
+    .about-image-container {
+        order: 2; /* Imagem abaixo do texto */
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    
+    .about-content {
+        order: 1; /* Texto primeiro */
     }
     
     .about-stats {
@@ -241,7 +265,40 @@
     }
 }
 
+@media (max-width: 768px) {
+    /* Ajustes específicos para mobile intermediário */
+    .about-section {
+        padding: 40px 20px 100px 20px; /* Reduzido padding superior para 40px em tablets */
+    }
+    
+    .about-image {
+        height: auto !important; /* Remove altura fixa do inline style */
+        aspect-ratio: 3/4 !important; /* Aspect ratio 3:4 para mobile */
+        max-height: 450px !important; /* Aumentado de 320px para 450px */
+        min-height: 350px !important; /* Aumentado de 280px para 350px */
+    }
+    
+    /* Layout organizado: texto primeiro, imagem depois */
+    .about-image-container {
+        order: 2 !important;
+        max-width: 400px !important; /* Aumentado de 320px para 400px */
+        margin: 0 auto !important;
+    }
+    
+    .about-content {
+        order: 1 !important;
+    }
+    
+    .about-content p {
+        margin-bottom: 40px; /* Maior espaçamento entre parágrafos no tablet */
+    }
+}
+
 @media (max-width: 576px) {
+    .about-section {
+        padding: 20px 20px 80px 20px; /* Reduzido padding superior para 20px em mobile pequeno */
+    }
+    
     .stat-item {
         flex: 0 0 100%;
         margin-bottom: 15px;
@@ -255,30 +312,53 @@
         font-style: normal !important;
     }
     
+    .about-content p {
+        margin-bottom: 45px; /* Ainda maior espaçamento entre parágrafos no mobile */
+    }
+    
     .stat-number {
         font-size: 30px;
     }
+    
+    /* Ajustes específicos para a imagem da seção sobre em mobile */
+    .about-image {
+        height: auto !important; /* Remove altura fixa do inline style */
+        aspect-ratio: 3.5/6 !important; /* Aspect ratio 3:5 para mobile pequeno - mais vertical */
+        min-height: 400px !important; /* Aumentado de 300px para 400px */
+        max-height: 600px !important; /* Aumentado de 400px para 500px */
+    }
+    
+    /* Layout mobile: texto primeiro, imagem depois */
+    .about-image-container {
+        order: 2 !important;
+        max-width: 95% !important; /* Aumentado de 90% para 95% - ainda mais próximo das bordas */
+        width: 90% !important; /* Força a largura */
+        margin: 0 auto !important;
+        padding: 0 10px !important; /* Padding mínimo para não colar na borda */
+    }
+    
+    .about-content {
+        order: 1 !important;
+    }
 }/* Importação de Fontes */
 @font-face {
-    font-family: 'Articulat CF';
-    src: url('../fontes/Articulat/ArticulatCF-Normal.ttf') format('truetype'),
-         url('../fontes/Articulat/ArticulatCF-Normal.otf') format('opentype');
+    font-family: 'Montserrat';
+    src: url('../fontes/Montserrat/static/Montserrat-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Articulat CF';
-    src: url('../fontes/Articulat/ArticulatCF-Bold.ttf') format('truetype'),
-         url('../fontes/Articulat/ArticulatCF-Bold.otf') format('opentype');
+    font-family: 'Montserrat';
+    src: url('../fontes/Montserrat') format('truetype'),
+         url('../fontes/Montserrat/static/Montserrat-Bold.ttf') format('opentype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Articulat CF Medium';
-    src: url('../fontes/Articulat/ArticulatCF-Medium.ttf') format('truetype'),
-         url('../fontes/Articulat/ArticulatCF-Medium.otf') format('opentype');
+    font-family: 'Montserrat Medium';
+    src: url('../fontes/Montserrat/static/Montserrat-Medium.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
 }
@@ -338,7 +418,7 @@ html, body {
 }
 
 body {
-    font-family: 'Articulat CF', Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     line-height: 1.6;
     color: #0a1232;
     background-color: #000B39; /* Mudado para azul para evitar área branca no mobile */
@@ -719,7 +799,7 @@ body:not(.menu-open) .testimonials-section {
     margin-bottom: 40px;
     font-size: 24px; /* Aumentado de 22px para 24px */
     line-height: 1.5;
-    font-family: 'Articulat CF Medium', sans-serif;
+    font-family: 'Montserrat Medium', sans-serif;
     color: #fff; /* Texto branco para contraste com o fundo azul */
 }
 
@@ -1113,7 +1193,7 @@ body:not(.menu-open) .testimonials-section {
 }
 
 .section-description p {
-    font-family: 'Articulat CF Medium', sans-serif;
+    font-family: 'Montserrat Medium', sans-serif;
     font-size: 25px;
     color: #000B39;
     line-height: 1.6;
@@ -1195,7 +1275,7 @@ body:not(.menu-open) .testimonials-section {
 }
 
 .price {
-    font-family: 'Articulat CF light', sans-serif;
+    font-family: 'Montserrat light', sans-serif;
     font-size: 25px;
     font-style: italic;
     font-weight: lighter;
@@ -1222,7 +1302,7 @@ body:not(.menu-open) .testimonials-section {
     position: relative;
     padding-left: 40px; /* Aumentado para acomodar os ícones maiores */
     margin-bottom: 27px; /* Aumentado o espaçamento entre itens */
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     line-height: 1.5;
     color: #202B18;
@@ -1263,7 +1343,7 @@ body:not(.menu-open) .testimonials-section {
     align-items: center;
     background-color: #000B39;
     color: #fff;
-    font-family: 'Articulat CF', serif;
+    font-family: 'Montserrat', serif;
     font-style: normal;
     font-weight: normal;
     letter-spacing: 2px;
@@ -1433,7 +1513,7 @@ body:not(.menu-open) .testimonials-section {
     .contract-btn {
         padding: 14px 20px;
         font-size: 16px;
-        font-family: 'Articulat CF', serif;
+        font-family: 'Montserrat', serif;
         font-style: normal;
         font-weight: normal;
         letter-spacing: 2px;
@@ -1577,7 +1657,7 @@ body:not(.menu-open) .testimonials-section {
 }
 
 .contact-text h3 {
-    font-family: 'Articulat CF Medium', sans-serif;
+    font-family: 'Montserrat Medium', sans-serif;
     font-size: 20px; /* Ajustado para o novo design */
     color: #000B39;
     margin-bottom: 6px;
@@ -1587,7 +1667,7 @@ body:not(.menu-open) .testimonials-section {
 }
 
 .contact-text p {
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px; /* Ajustado para o novo design */
     color: #202B18;
     font-weight: 500;
@@ -1612,7 +1692,7 @@ body:not(.menu-open) .testimonials-section {
     padding: 15px;
     border: 1px solid #ddd;
     border-radius: 6px;
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     transition: border-color 0.3s ease;
 }
@@ -1630,7 +1710,7 @@ body:not(.menu-open) .testimonials-section {
     border: none;
     border-radius: 6px;
     padding: 15px 25px;
-    font-family: 'Articulat CF Medium', sans-serif;
+    font-family: 'Montserrat Medium', sans-serif;
     font-size: 18px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1659,9 +1739,477 @@ body:not(.menu-open) .testimonials-section {
 }
 
 .footer-content p {
-    font-family: 'Articulat CF', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     opacity: 0.8;
+}
+
+/* Seção O que Oferecemos */
+.what-we-offer-section {
+    padding: 100px 20px;
+    background-color: #fff;
+    position: relative;
+}
+
+.what-we-offer-section .section-title h2 {
+    font-family: 'TheSilverEditorial', serif !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-size: 48px;
+    color: #000B39;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.what-we-offer-section .section-description {
+    text-align: center;
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.what-we-offer-section .section-description p {
+    font-family: 'Montserrat Medium', sans-serif;
+    font-size: 25px;
+    color: #202B18;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.service-item {
+    background-color: #f8f9fa;
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 11, 57, 0.08);
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #C9E165 0%, #000B39 100%);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.service-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 11, 57, 0.15);
+    background-color: #f1f8e4;
+}
+
+.service-item:hover::before {
+    transform: scaleX(1);
+}
+
+.service-icon {
+    background: linear-gradient(135deg, #C9E165 0%, #a8c454 100%);
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    box-shadow: 0 8px 24px rgba(201, 225, 101, 0.3);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(0,0,0,0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.service-item:hover .service-icon {
+    transform: rotate(-5deg) scale(1.1);
+    box-shadow: 0 12px 32px rgba(201, 225, 101, 0.4);
+}
+
+.service-item:hover .service-icon::before {
+    opacity: 1;
+}
+
+.service-icon i {
+    font-size: 32px;
+    color: #000B39;
+    z-index: 1;
+    position: relative;
+}
+
+.service-item h3 {
+    font-family: 'TheSilverEditorial', serif !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-size: 26px;
+    color: #000B39;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.service-platforms {
+    font-family: 'Playfair Display SemiBold', 'Playfair Display', serif !important;
+    font-weight: 600 !important;
+    font-style: italic !important;
+    font-size: 18px;
+    color: #000B39;
+    background: linear-gradient(135deg, rgba(201, 225, 101, 0.15) 0%, rgba(201, 225, 101, 0.05) 100%);
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin-top: 15px;
+    display: inline-block;
+    border: 1px solid rgba(201, 225, 101, 0.3);
+    letter-spacing: 0.5px;
+}
+
+/* Animações para os serviços */
+.hidden-service {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.hidden-service.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsividade para a seção O que Oferecemos */
+@media (max-width: 992px) {
+    .what-we-offer-section {
+        padding: 80px 20px;
+    }
+    
+    .what-we-offer-section .section-title h2 {
+        font-size: 42px;
+        letter-spacing: 2px;
+    }
+    
+    .what-we-offer-section .section-description p {
+        font-size: 22px;
+    }
+    
+    .services-list {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+    
+    .service-item {
+        padding: 35px 25px;
+    }
+    
+    .service-item h3 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .what-we-offer-section {
+        padding: 70px 15px;
+    }
+    
+    .what-we-offer-section .section-title h2 {
+        font-size: 36px;
+        letter-spacing: 2px;
+    }
+    
+    .what-we-offer-section .section-description p {
+        font-size: 20px;
+        padding: 0 10px;
+    }
+    
+    .services-list {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        max-width: 500px;
+    }
+    
+    .service-item {
+        padding: 30px 20px;
+    }
+    
+    .service-icon {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+    }
+    
+    .service-icon i {
+        font-size: 28px;
+    }
+    
+    .service-item h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+    
+    .service-platforms {
+        font-size: 15px;
+        padding: 6px 12px;
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .what-we-offer-section {
+        padding: 60px 10px;
+    }
+    
+    .what-we-offer-section .section-title h2 {
+        font-size: 32px;
+        letter-spacing: 1px;
+    }
+    
+    .what-we-offer-section .section-description p {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+    
+    .service-item {
+        padding: 25px 15px;
+    }
+    
+    .service-icon {
+        width: 65px;
+        height: 65px;
+    }
+    
+    .service-icon i {
+        font-size: 26px;
+    }
+    
+    .service-item h3 {
+        font-size: 20px;
+    }
+    
+    .service-platforms {
+        font-size: 14px;
+        padding: 5px 10px;
+        margin-top: 10px;
+    }
+}
+
+/* Seção Por que Escolher */
+.why-choose-section {
+    padding: 100px 20px;
+    background-color: #E0E3DF;
+    position: relative;
+}
+
+.why-choose-section .section-title h2 {
+    font-family: 'TheSilverEditorial', serif !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-size: 48px;
+    color: #000B39;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    display: inline-block;
+}
+
+.why-choose-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.why-choose-text {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.why-choose-text.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.why-choose-text .main-text {
+    font-family: 'Montserrat Medium', sans-serif;
+    font-size: 24px;
+    color: #202B18;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.highlight-quote {
+    background: linear-gradient(135deg, rgba(201, 225, 101, 0.1) 0%, rgba(201, 225, 101, 0.05) 100%);
+    border-left: 4px solid #C9E165;
+    border-radius: 12px;
+    padding: 30px 40px;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-quote::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(0,0,0,0.05) 100%);
+    pointer-events: none;
+}
+
+.highlight-quote p {
+    font-family: 'Playfair Display SemiBold', 'Playfair Display', serif !important;
+    font-weight: 600 !important;
+    font-style: italic !important;
+    font-size: 26px;
+    color: #000B39;
+    margin: 0;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+
+.highlight-quote .emphasis {
+    color: #C9E165;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 11, 57, 0.1);
+}
+
+/* Animações para a seção Por que Escolher */
+.hidden-why-choose {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.hidden-why-choose.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsividade para a seção Por que Escolher */
+@media (max-width: 992px) {
+    .why-choose-section {
+        padding: 80px 20px;
+    }
+    
+    .why-choose-section .section-title h2 {
+        font-size: 42px;
+        letter-spacing: 2px;
+        margin-bottom: 50px;
+    }
+    
+    .why-choose-content {
+        max-width: 800px;
+    }
+    
+    .why-choose-text .main-text {
+        font-size: 22px;
+    }
+    
+    .highlight-quote p {
+        font-size: 24px;
+    }
+    
+    .highlight-quote {
+        padding: 25px 30px;
+        margin-top: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .why-choose-section {
+        padding: 70px 15px;
+    }
+    
+    .why-choose-section .section-title h2 {
+        font-size: 36px;
+        letter-spacing: 2px;
+        margin-bottom: 40px;
+    }
+    
+    .why-choose-content {
+        max-width: 100%;
+    }
+    
+    .why-choose-text .main-text {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .highlight-quote {
+        padding: 20px 25px;
+        margin-top: 30px;
+    }
+    
+    .highlight-quote p {
+        font-size: 22px;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 576px) {
+    .why-choose-section {
+        padding: 60px 10px;
+    }
+    
+    .why-choose-section .section-title h2 {
+        font-size: 32px;
+        letter-spacing: 1px;
+        margin-bottom: 35px;
+    }
+    
+    .why-choose-text .main-text {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+    }
+    
+    .highlight-quote {
+        padding: 18px 20px;
+        margin-top: 25px;
+        border-left-width: 3px;
+    }
+    
+    .highlight-quote p {
+        font-size: 20px;
+        line-height: 1.3;
+    }
 }
 
 /* Responsividade para seção de contato */
