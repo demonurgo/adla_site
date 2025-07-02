@@ -1,0 +1,76 @@
+{
+    "name": "Adla Mendes - Social Media Recife",
+    "short_name": "Adla Mendes",
+    "description": "Especialista em Social Media em Recife. Gestão de redes sociais, estratégia digital e criação de conteúdo personalizado para sua marca.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#000B39",
+    "theme_color": "#000B39",
+    "icons": [
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "152x152",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "120x120",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "114x114",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "76x76",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "60x60",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "57x57",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "Logos/adlaico.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        }
+    ]
+}
