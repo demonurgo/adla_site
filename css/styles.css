@@ -1782,30 +1782,27 @@ body:not(.menu-open) .testimonials-section {
 
 .services-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
     justify-items: center;
+    grid-template-areas: 
+        "item1 item1 item2 item2 item3 item3"
+        ". item4 item4 item5 item5 .";
 }
 
-.services-list .service-item:nth-child(4),
-.services-list .service-item:nth-child(5) {
-    grid-column: span 1;
+.services-list .service-item {
+    width: 100%;
+    max-width: 320px;
 }
 
-.services-list .service-item:nth-child(4) {
-    grid-column-start: 1;
-    justify-self: end;
-    margin-right: 20px;
-}
-
-.services-list .service-item:nth-child(5) {
-    grid-column-start: 3;
-    justify-self: start;
-    margin-left: 20px;
-}
+.services-list .service-item:nth-child(1) { grid-area: item1; }
+.services-list .service-item:nth-child(2) { grid-area: item2; }
+.services-list .service-item:nth-child(3) { grid-area: item3; }
+.services-list .service-item:nth-child(4) { grid-area: item4; }
+.services-list .service-item:nth-child(5) { grid-area: item5; }
 
 .service-item {
     background-color: #f8f9fa;
@@ -1818,6 +1815,10 @@ body:not(.menu-open) .testimonials-section {
     transform: translateY(30px);
     position: relative;
     overflow: hidden;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .service-item::before {
@@ -1957,10 +1958,26 @@ body:not(.menu-open) .testimonials-section {
     .services-list {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 30px;
+        justify-items: stretch;
+        grid-template-areas: none;
+    }
+    
+    .services-list .service-item {
+        max-width: none;
+    }
+    
+    .services-list .service-item:nth-child(1),
+    .services-list .service-item:nth-child(2),
+    .services-list .service-item:nth-child(3),
+    .services-list .service-item:nth-child(4),
+    .services-list .service-item:nth-child(5) {
+        grid-area: unset;
+        justify-self: stretch;
     }
     
     .service-item {
         padding: 35px 25px;
+        min-height: 260px;
     }
     
     .service-item h3 {
@@ -1987,10 +2004,26 @@ body:not(.menu-open) .testimonials-section {
         grid-template-columns: 1fr;
         gap: 25px;
         max-width: 500px;
+        justify-items: stretch;
+        grid-template-areas: none;
+    }
+    
+    .services-list .service-item {
+        max-width: none;
+    }
+    
+    .services-list .service-item:nth-child(1),
+    .services-list .service-item:nth-child(2),
+    .services-list .service-item:nth-child(3),
+    .services-list .service-item:nth-child(4),
+    .services-list .service-item:nth-child(5) {
+        grid-area: unset;
+        justify-self: stretch;
     }
     
     .service-item {
         padding: 30px 20px;
+        min-height: 240px;
     }
     
     .service-icon {
