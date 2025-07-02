@@ -74,41 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // O listener de scroll foi combinado com outras funções na função handleScroll
     
-    // Reduz o tamanho da navbar durante a rolagem e ajusta transparência
-    function shrinkNavbar() {
-        const navbar = document.querySelector('.main-nav');
-        const logo = document.querySelector('.logo-image');
-        
-        if (window.scrollY > 50) {
-            navbar.style.padding = '6px 0'; // Navbar menor ao scrollar
-            navbar.style.backgroundColor = 'rgba(0, 11, 57, 0.25)'; // Mais opaco ao scrollar
-            navbar.style.backdropFilter = 'blur(15px)';
-            if (logo) {
-                // Ajuste responsivo da logo durante o scroll
-                if (window.innerWidth > 768) {
-                    logo.style.height = '30px'; // Desktop
-                } else {
-                    logo.style.height = '26px'; // Mobile
-                }
-                logo.style.marginTop = '1px';
-            }
-        } else {
-            navbar.style.padding = '12px 0';
-            navbar.style.backgroundColor = 'rgba(0, 11, 57, 0.1)'; // Mais transparente no topo
-            navbar.style.backdropFilter = 'blur(10px)';
-            if (logo) {
-                // Ajuste responsivo da logo no topo
-                if (window.innerWidth > 768) {
-                    logo.style.height = '36px'; // Desktop
-                } else if (window.innerWidth > 576) {
-                    logo.style.height = '32px'; // Tablet
-                } else {
-                    logo.style.height = '28px'; // Mobile pequeno
-                }
-                logo.style.marginTop = '2px';
-            }
-        }
-    }
+    // Função removida - navbar não muda mais com scroll
     
     // Controla o efeito de blur na blue-section
     function handleBlueSection() {
@@ -128,9 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Combina ambas as funções de scroll
+    // Combina as funções de scroll (navbar removida)
     function handleScroll() {
-        shrinkNavbar();
         handleBlueSection();
         highlightNavOnScroll();
     }
@@ -138,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', handleScroll);
     
     // Executa as funções no carregamento da página
-    shrinkNavbar();
     handleBlueSection();
     
     // Verifica o redimensionamento da tela para gerenciar o menu

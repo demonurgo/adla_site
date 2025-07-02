@@ -1,6 +1,6 @@
 @media (max-width: 576px) {
     body {
-        padding-top: 0; /* Removido padding para mobile pequeno também */
+        padding-top: 0; /* Sem padding - navbar não é mais fixa */
     }
     
     /* Ajustes da logo para mobile pequeno */
@@ -609,7 +609,7 @@ body:not(.menu-open) .testimonials-section {
     align-items: center;
     padding: 12px 0; /* Padding aumentado para dar mais espaço */
     background-color: rgba(0, 11, 57, 0.1); /* Transparência corrigida com a cor azul do projeto */
-    position: fixed; /* Navbar fixa */
+    position: absolute; /* Mudado de fixed para absolute */
     top: 0;
     left: 0;
     width: 100%;
