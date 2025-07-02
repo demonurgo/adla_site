@@ -1782,11 +1782,29 @@ body:not(.menu-open) .testimonials-section {
 
 .services-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    justify-items: center;
+}
+
+.services-list .service-item:nth-child(4),
+.services-list .service-item:nth-child(5) {
+    grid-column: span 1;
+}
+
+.services-list .service-item:nth-child(4) {
+    grid-column-start: 1;
+    justify-self: end;
+    margin-right: 20px;
+}
+
+.services-list .service-item:nth-child(5) {
+    grid-column-start: 3;
+    justify-self: start;
+    margin-left: 20px;
 }
 
 .service-item {
@@ -1884,18 +1902,29 @@ body:not(.menu-open) .testimonials-section {
 }
 
 .service-platforms {
-    font-family: 'Playfair Display SemiBold', 'Playfair Display', serif !important;
-    font-weight: 600 !important;
-    font-style: italic !important;
-    font-size: 18px;
-    color: #000B39;
     background: linear-gradient(135deg, rgba(201, 225, 101, 0.15) 0%, rgba(201, 225, 101, 0.05) 100%);
-    padding: 8px 15px;
+    padding: 12px 18px;
     border-radius: 20px;
     margin-top: 15px;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     border: 1px solid rgba(201, 225, 101, 0.3);
-    letter-spacing: 0.5px;
+    width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.service-platforms i {
+    font-size: 22px;
+    color: #000B39;
+    transition: all 0.3s ease;
+}
+
+.service-platforms i:hover {
+    color: #C9E165;
+    transform: scale(1.2);
 }
 
 /* Animações para os serviços */
