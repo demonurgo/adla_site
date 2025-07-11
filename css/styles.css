@@ -363,26 +363,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'Playfair Display';
-    src: url('../fontes/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Playfair Display';
-    src: url('../fontes/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: 'Playfair Display SemiBold';
-    src: url('../fontes/Playfair_Display/static/PlayfairDisplay-SemiBoldItalic.ttf') format('truetype');
-    font-weight: 600;
-    font-style: italic;
-}
 
 @font-face {
     font-family: 'TheSilverEditorial';
@@ -2155,7 +2135,7 @@ body:not(.menu-open) .testimonials-section {
 }
 
 .highlight-quote p {
-    font-family: 'Playfair Display SemiBold', 'Playfair Display', serif !important;
+    font-family: 'TheSilverEditorial', serif !important;
     font-weight: 600 !important;
     font-style: italic !important;
     font-size: 26px;
