@@ -1,6 +1,35 @@
+/* iOS Safari Notch Support */
+@supports (padding: max(0px)) {
+    html {
+        background-color: #000B39;
+    }
+    
+    body {
+        padding-top: max(env(safe-area-inset-top), 0px);
+        padding-bottom: max(env(safe-area-inset-bottom), 0px);
+        padding-left: max(env(safe-area-inset-left), 0px);
+        padding-right: max(env(safe-area-inset-right), 0px);
+        background-color: #000B39;
+    }
+}
+
+/* Android Notch Support */
+@media (max-width: 768px) {
+    html {
+        background-color: #000B39;
+    }
+    
+    body {
+        background-color: #000B39;
+        margin: 0;
+        padding: 0;
+    }
+}
+
 @media (max-width: 576px) {
     body {
-        padding-top: 0; /* Sem padding - navbar não é mais fixa */
+        padding-top: max(env(safe-area-inset-top), 0px); /* Combinando notch support com padding existente */
+        background-color: #000B39;
     }
     
     /* Ajustes da logo para mobile pequeno */
