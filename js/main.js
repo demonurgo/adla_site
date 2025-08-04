@@ -11,17 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
         mainNavUl.classList.toggle('active');
         document.body.classList.toggle('menu-open');
         
-        // Alterna a aparência do botão hambúrguer
+        // Alterna a aparência do botão hambúrguer com animação simétrica
         const spans = menuToggle.querySelectorAll('span');
         
         if (mainNavUl.classList.contains('active')) {
-            spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-            spans[1].style.opacity = '0';
-            spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            // Ativa a classe CSS para formação X simétrica
+            menuToggle.classList.add('active');
         } else {
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
+            // Remove a classe CSS para retornar ao estado hambúrguer
+            menuToggle.classList.remove('active');
         }
     }
     
@@ -112,10 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.remove('menu-open');
             
             // Restaura o estado do botão hambúrguer
-            const spans = menuToggle.querySelectorAll('span');
-            spans[0].style.transform = 'none';
-            spans[1].style.opacity = '1';
-            spans[2].style.transform = 'none';
+            menuToggle.classList.remove('active');
         }
     });
     

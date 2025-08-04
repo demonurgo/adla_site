@@ -16,6 +16,32 @@
         height: 28px; /* Ajustado para telas pequenas */
         margin-top: 0px; /* Removido ajuste que estava desalinhando */
     }
+    
+    /* Ajustes específicos do menu mobile para telas menores */
+    .main-nav ul.active {
+        gap: 45px; /* Gap ligeiramente menor em telas muito pequenas */
+        padding: 0 15px;
+    }
+    
+    .main-nav a {
+        font-size: 24px; /* Fonte menor para telas muito pequenas */
+        padding: 18px 25px;
+        min-width: 180px;
+        letter-spacing: 2px;
+    }
+    
+    .main-nav a.pill-item {
+        padding: 18px 30px;
+        min-width: 200px;
+        border-width: 1.5px; /* Borda ligeiramente menor */
+    }
+    
+    /* Hamburger menu ajustado para telas pequenas */
+    .menu-toggle {
+        right: 20px;
+        width: 30px;
+        height: 20px;
+    }
 
     .hero-section {
         min-height: 90vh; /* Volta para 90% no mobile pequeno */
@@ -894,14 +920,23 @@ body:not(.menu-open) .testimonials-section {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 21px;
+    width: 32px; /* Ligeiramente maior para melhor toque */
+    height: 22px;
     cursor: pointer;
     z-index: 1002;
     position: absolute;
     top: 50%;
     right: 25px;
     transform: translateY(-50%);
+    padding: 4px; /* Área de toque maior */
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    align-items: center; /* Garante alinhamento perfeito das spans */
+}
+
+/* Área de toque visual no hover */
+.menu-toggle:hover {
+    background-color: rgba(201, 225, 101, 0.1);
 }
 
 .menu-toggle span {
@@ -910,8 +945,64 @@ body:not(.menu-open) .testimonials-section {
     width: 100%;
     background-color: #fff; /* Ícone branco */
     border-radius: 3px;
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center center; /* Origem exata no centro */
+    position: relative;
+}
+
+/* Posicionamento específico para cada linha */
+.menu-toggle span:nth-child(1) {
+    transform-origin: center center;
+}
+
+.menu-toggle span:nth-child(2) {
+    transform-origin: center center;
+}
+
+.menu-toggle span:nth-child(3) {
+    transform-origin: center center;
+}
+
+/* Animação aprimorada para o estado ativo */
+.menu-toggle.active span {
+    background-color: #C9E165; /* Verde quando ativo */
+}
+
+/* Formação X perfeita com CSS - simetria matemática precisa */
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(0, 9px);
     transform-origin: center;
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(0, -9px);
+    transform-origin: center;
+}
+
+/* Ajustes específicos para telas menores mantendo a simetria perfeita */
+@media (max-width: 576px) {
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(0, 8px);
+    }
+    
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(0, -8px);
+    }
+}
+
+/* Efeito de hover no hamburger */
+.menu-toggle:hover span {
+    background-color: #C9E165;
+    transform: scaleX(1.1);
+}
+
+.menu-toggle.active:hover span {
+    background-color: #fff;
 }
 
 /* Responsividade */
@@ -1054,57 +1145,110 @@ body:not(.menu-open) .testimonials-section {
         height: 100vh;
         top: 0;
         left: 0;
-        align-items: flex-start;
+        align-items: center; /* Centralizados horizontalmente */
         justify-content: center;
-        gap: 50px;
+        gap: 60px; /* Maior espaçamento entre itens */
         z-index: 1000;
-        animation: slideInFromRight 0.4s ease-out;
-        padding-left: 32px;
+        animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        padding: 0 20px; /* Padding lateral uniforme */
     }
     
-    /* Animação de slide para o menu mobile */
+    /* Animação melhorada de slide para o menu mobile */
     @keyframes slideInFromRight {
-        from {
+        0% {
             transform: translateX(100%);
             opacity: 0;
         }
-        to {
+        60% {
+            transform: translateX(-5%);
+            opacity: 0.8;
+        }
+        100% {
             transform: translateX(0);
             opacity: 1;
         }
     }
     
+    /* Animação individual para itens do menu */
+    .main-nav ul.active li {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: menuItemSlide 0.4s ease forwards;
+    }
+    
+    .main-nav ul.active li:nth-child(1) { animation-delay: 0.1s; }
+    .main-nav ul.active li:nth-child(2) { animation-delay: 0.2s; }
+    .main-nav ul.active li:nth-child(3) { animation-delay: 0.3s; }
+    .main-nav ul.active li:nth-child(4) { animation-delay: 0.4s; }
+    .main-nav ul.active li:nth-child(5) { animation-delay: 0.5s; }
+    
+    @keyframes menuItemSlide {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
     .main-nav a {
-        font-size: 24px; /* Aumentado para mobile */
+        font-size: 28px; /* Aumentado para melhor legibilidade */
         font-family: 'TheSilverEditorial', serif;
         font-weight: normal;
         font-style: normal;
-        letter-spacing: 2px; /* Espaçamento entre letras */
-        padding: 15px 25px; /* Padding maior para mobile */
+        letter-spacing: 2.5px; /* Maior espaçamento entre letras */
+        padding: 20px 30px; /* Padding maior para melhor toque */
         text-align: center; /* Centraliza o texto */
-        width: 100%; /* Faz os links ocuparem toda a largura */
-        max-width: 300px; /* Limita a largura máxima para melhor visual */
+        width: auto; /* Largura automática para melhor centralização */
+        min-width: 200px; /* Largura mínima consistente */
         color: #fff; /* Cor branca para contraste com fundo azul translúcido */
+        border-radius: 12px; /* Bordas arredondadas para melhor aparência */
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Efeito de background suave nos links do mobile */
+    .main-nav a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(201, 225, 101, 0.1), transparent);
+        transition: left 0.5s ease;
     }
     
     .main-nav a:hover {
         color: #C9E165; /* Verde claro no hover para mobile */
-        transform: translateY(-2px);
+        transform: translateY(-3px) scale(1.02);
+        background-color: rgba(201, 225, 101, 0.1);
+        box-shadow: 0 8px 25px rgba(201, 225, 101, 0.2);
+    }
+    
+    .main-nav a:hover::before {
+        left: 100%;
     }
     
     .main-nav a.pill-item {
-        padding: 18px 30px; /* Aumentado para ser proporcional à nova navbar */
-        margin: 5px 0;
-        border: .5px solid #fff; /* Borda branca para menu mobile */
+        padding: 20px 35px; /* Aumentado para ser proporcional */
+        margin: 0; /* Remove margin para melhor alinhamento */
+        border: 2px solid #fff; /* Borda mais visível */
         background-color: transparent;
         color: #fff; /* Cor branca para menu mobile */
+        border-radius: 25px; /* Bordas mais arredondadas para pill */
+        min-width: 220px; /* Largura mínima maior para pill items */
     }
     
     .main-nav a.pill-item:hover {
-        color: #C9E165; /* Verde claro no hover */
+        color: #000B39; /* Texto escuro no hover */
         border-color: #C9E165; /* Borda verde no hover */
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(201, 225, 101, 0.3);
+        background-color: #C9E165; /* Fundo verde no hover */
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(201, 225, 101, 0.4);
     }
     
     .placeholder-image {
