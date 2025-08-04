@@ -1,7 +1,9 @@
-/* iOS Safari Notch Support */
+/* Enhanced Notch Support - iOS Safari & Android */
 @supports (padding: max(0px)) {
     html {
-        background-color: #000B39;
+        background-color: #000B39 !important;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
     }
     
     body {
@@ -9,20 +11,39 @@
         padding-bottom: max(env(safe-area-inset-bottom), 0px);
         padding-left: max(env(safe-area-inset-left), 0px);
         padding-right: max(env(safe-area-inset-right), 0px);
-        background-color: #000B39;
+        background-color: #000B39 !important;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
     }
 }
 
-/* Android Notch Support */
+/* Universal mobile notch/cutout support */
 @media (max-width: 768px) {
     html {
-        background-color: #000B39;
+        background-color: #000B39 !important;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
     }
     
     body {
-        background-color: #000B39;
+        background-color: #000B39 !important;
         margin: 0;
         padding: 0;
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+    
+    /* Força background azul em todos os elementos raiz */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000B39;
+        z-index: -1;
+        pointer-events: none;
     }
 }
 
@@ -443,23 +464,26 @@
 
 /* Garante que toda a viewport seja azul no mobile */
 html {
-    background-color: #000B39;
+    background-color: #000B39 !important;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
 }
 
 /* Ajuste adicional para garantir que não haja área branca */
 html, body {
-    background-color: #000B39;
+    background-color: #000B39 !important;
 }
 
 body {
     font-family: 'Montserrat', Arial, sans-serif;
     line-height: 1.6;
     color: #0a1232;
-    background-color: #000B39; /* Mudado para azul para evitar área branca no mobile */
+    background-color: #000B39 !important; /* Mudado para azul para evitar área branca no mobile */
     overflow-x: hidden; /* Evita scroll horizontal */
     font-size: 18px; /* Tamanho base da fonte aumentado */
     padding-top: 0; /* Removido padding pois navbar é transparente */
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
 }
 
 body.menu-open {
@@ -1176,7 +1200,7 @@ body:not(.menu-open) .testimonials-section {
         left: 0;
         align-items: center; /* Centralizados horizontalmente */
         justify-content: center;
-        gap: 60px; /* Maior espaçamento entre itens */
+        gap: 40px; /* Reduzido de 60px para 40px */
         z-index: 1000;
         animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         padding: 0 20px; /* Padding lateral uniforme */
@@ -1223,17 +1247,17 @@ body:not(.menu-open) .testimonials-section {
     }
     
     .main-nav a {
-        font-size: 28px; /* Aumentado para melhor legibilidade */
+        font-size: 20px; /* Reduzido de 28px para 20px */
         font-family: 'TheSilverEditorial', serif;
         font-weight: normal;
         font-style: normal;
-        letter-spacing: 2.5px; /* Maior espaçamento entre letras */
-        padding: 20px 30px; /* Padding maior para melhor toque */
+        letter-spacing: 1.5px; /* Reduzido de 2.5px para 1.5px */
+        padding: 12px 20px; /* Reduzido de 20px 30px para 12px 20px */
         text-align: center; /* Centraliza o texto */
         width: auto; /* Largura automática para melhor centralização */
-        min-width: 200px; /* Largura mínima consistente */
+        min-width: 160px; /* Reduzido de 200px para 160px */
         color: #fff; /* Cor branca para contraste com fundo azul translúcido */
-        border-radius: 12px; /* Bordas arredondadas para melhor aparência */
+        border-radius: 8px; /* Reduzido de 12px para 8px */
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         position: relative;
         overflow: hidden;
@@ -1263,13 +1287,13 @@ body:not(.menu-open) .testimonials-section {
     }
     
     .main-nav a.pill-item {
-        padding: 20px 35px; /* Aumentado para ser proporcional */
+        padding: 12px 24px; /* Reduzido de 20px 35px para 12px 24px */
         margin: 0; /* Remove margin para melhor alinhamento */
         border: 2px solid #fff; /* Borda mais visível */
         background-color: transparent;
         color: #fff; /* Cor branca para menu mobile */
-        border-radius: 25px; /* Bordas mais arredondadas para pill */
-        min-width: 220px; /* Largura mínima maior para pill items */
+        border-radius: 20px; /* Reduzido de 25px para 20px */
+        min-width: 180px; /* Reduzido de 220px para 180px */
     }
     
     .main-nav a.pill-item:hover {
@@ -1712,6 +1736,19 @@ body:not(.menu-open) .testimonials-section {
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
+    text-decoration: none; /* Remove underline quando usado como link */
+    color: inherit; /* Herda a cor do texto do parent */
+}
+
+.contact-item.whatsapp-clickable {
+    cursor: pointer;
+}
+
+.contact-item.whatsapp-clickable:visited,
+.contact-item.whatsapp-clickable:link,
+.contact-item.whatsapp-clickable:active {
+    text-decoration: none;
+    color: inherit;
 }
 
 .contact-item:hover {
@@ -1869,6 +1906,56 @@ body:not(.menu-open) .testimonials-section {
     color: #000B39;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(0, 11, 57, 0.1);
+}
+
+/* Botão Voltar ao Topo */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #C9E165 0%, #a8c654 100%);
+    border: none;
+    border-radius: 50%;
+    color: #000B39;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(201, 225, 101, 0.3);
+}
+
+.back-to-top:hover {
+    background: linear-gradient(135deg, #d4f170 0%, #b8d05f 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(201, 225, 101, 0.4);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsividade do botão back-to-top */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
 }
 
 /* Footer */

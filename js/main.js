@@ -255,6 +255,33 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Reconfigura o slider em caso de redimensionamento da janela
     window.addEventListener('resize', setupInfiniteSlider);
+    
+    // Configuração do botão "Voltar ao Topo"
+    const backToTopButton = document.getElementById('backToTop');
+    
+    function toggleBackToTopButton() {
+        if (window.scrollY > 300) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    }
+    
+    // Adiciona o evento de scroll para mostrar/esconder o botão
+    window.addEventListener('scroll', toggleBackToTopButton);
+    
+    // Adiciona o evento de clique para voltar ao topo
+    if (backToTopButton) {
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    // Verifica a posição inicial da página
+    toggleBackToTopButton();
 });
 
 // Função para fazer scroll suave até a seção de planos
