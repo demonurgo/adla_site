@@ -588,7 +588,7 @@ body:not(.menu-open) .testimonials-section {
     justify-content: center;
     align-items: center;
     padding: 12px 0; /* Padding aumentado para dar mais espaço */
-    background-color: rgba(0, 11, 57, 0.1); /* Transparência corrigida com a cor azul do projeto */
+    background-color: transparent; /* Completamente transparente */
     position: absolute; /* Mudado de fixed para absolute */
     top: 0;
     left: 0;
@@ -596,9 +596,6 @@ body:not(.menu-open) .testimonials-section {
     z-index: 1000; /* Z-index alto para ficar acima de tudo */
     transition: all 0.3s ease;
     min-height: 64px; /* Altura mínima aumentada para acomodar melhor a logo */
-    backdrop-filter: blur(10px); /* Efeito de blur sutil no fundo */
-    -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Safari */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
 }
 
 /* Logo da navbar - configuração padrão (mobile) */
@@ -992,10 +989,7 @@ body:not(.menu-open) .testimonials-section {
         padding: 8px 0; /* Padding ajustado para mobile */
         justify-content: flex-end;
         min-height: 72px; /* Altura ajustada para mobile */
-        background-color: rgba(0, 11, 57, 0.15); /* Fundo ligeiramente mais opaco para mobile */
-        backdrop-filter: blur(10px); /* Efeito blur para mobile */
-        -webkit-backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background-color: transparent; /* Completamente transparente */
     }
     
     /* Ajustes da logo para mobile */
