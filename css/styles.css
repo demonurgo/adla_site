@@ -677,25 +677,11 @@ body:not(.menu-open) .testimonials-section {
     min-height: 64px; /* Altura mínima aumentada para acomodar melhor a logo */
 }
 
-/* Logo da navbar - configuração padrão (mobile) */
+/* Logo da navbar - escondida por padrão */
 .navbar-logo {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1001;
-    display: flex;
-    align-items: center;
-    height: 100%; /* Garante que a logo tenha a altura total da navbar */
+    display: none;
 }
 
-/* Logo da navbar - configuração para desktop */
-@media (min-width: 769px) {
-    .navbar-logo {
-        left: 80px;
-        top: 47px;
-    }
-}
 
 .logo-image {
     height: 36px; /* Reduzido para garantir que caiba completamente */
@@ -731,10 +717,17 @@ body:not(.menu-open) .testimonials-section {
 .main-nav ul {
     display: flex;
     list-style: none;
-    gap: 120px; /* Reduzido para acomodar as pill boxes */
+    gap: 120px; /* Padrão para telas muito grandes */
     margin: 0;
     padding: 0;
     align-items: center;
+}
+
+/* Resoluções até 1280px - gap reduzido para melhor fit */
+@media (min-width: 992px) and (max-width: 1280px) {
+    .main-nav ul {
+        gap: 80px;
+    }
 }
 
 .main-nav a {
@@ -968,6 +961,27 @@ body:not(.menu-open) .testimonials-section {
     background-size: contain;
 }
 
+.logo-slide.jose1 {
+    background-image: url('../Logos/white/jose1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-slide.jose2 {
+    background-image: url('../Logos/white/jose2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-slide.jose3 {
+    background-image: url('../Logos/white/jose3.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 /* Menu Hambúrguer para Mobile */
 .menu-toggle {
     display: none;
@@ -1128,25 +1142,30 @@ body:not(.menu-open) .testimonials-section {
     }
 }
 
-@media (max-width: 768px) {
+/* Mobile e Tablet - Menu hamburger */
+@media (max-width: 991px) {
     .main-nav {
-        padding: 8px 0; /* Padding ajustado para mobile */
+        padding: 8px 0;
         justify-content: flex-end;
-        min-height: 72px; /* Altura ajustada para mobile */
-        background-color: transparent; /* Completamente transparente */
+        min-height: 72px;
+        background-color: transparent;
     }
     
-    /* Ajustes da logo para mobile */
-    .navbar-logo {
-        top: 50%; /* Centralizado verticalmente */
+    /* Esconde menu desktop */
+    .main-nav ul {
+        display: none;
+    }
+    
+    /* Mostra menu hamburger */
+    .menu-toggle {
+        display: flex;
+        margin-right: 0px;
+        top: 50%;
         transform: translateY(-50%);
-        left: 20px;
+        right: 20px;
     }
     
-    .logo-image {
-        height: 32px; /* Ajustado proporcionalmente */
-        margin-top: 0px; /* Removido ajuste que estava desalinhando */
-    }
+    /* Logo continua escondida em mobile por padrão */
     
     body {
         padding-top: 0; /* Removido padding para mobile também */
@@ -1175,35 +1194,55 @@ body:not(.menu-open) .testimonials-section {
         flex-direction: column;
     }
     
-    .main-nav ul {
-        display: none;
-    }
-    
-    .menu-toggle {
-        display: flex;
-        margin-right: 0px;
-        top: 50%; /* Centralizado verticalmente */
-        transform: translateY(-50%);
-        right: 20px;
-    }
     
     .main-nav ul.active {
         display: flex;
         position: fixed;
         flex-direction: column;
-        background-color: rgba(0, 11, 57, 0.95);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        width: 100%;
+        background-color: rgba(0, 11, 57, 0.98);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
+        width: 100vw;
         height: 100vh;
         top: 0;
         left: 0;
-        align-items: center; /* Centralizados horizontalmente */
+        align-items: center;
         justify-content: center;
-        gap: 40px; /* Reduzido de 60px para 40px */
-        z-index: 1000;
+        gap: 40px;
+        z-index: 9999;
         animation: slideInFromRight 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        padding: 0 20px; /* Padding lateral uniforme */
+        padding: 80px 0 120px 0;
+        margin: 0;
+        overflow: hidden;
+    }
+    
+    /* Logo no menu hamburger ativo */
+    .main-nav ul.active::before {
+        content: '';
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 60px;
+        background-image: url('../Logos/adla.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: brightness(0) invert(1);
+        opacity: 0.95;
+        animation: logoFadeIn 0.6s ease 0.3s both;
+    }
+    
+    @keyframes logoFadeIn {
+        0% {
+            opacity: 0;
+            transform: translateX(-50%) translateY(-20px);
+        }
+        100% {
+            opacity: 0.95;
+            transform: translateX(-50%) translateY(0);
+        }
     }
     
     /* Animação melhorada de slide para o menu mobile */
@@ -1247,17 +1286,17 @@ body:not(.menu-open) .testimonials-section {
     }
     
     .main-nav a {
-        font-size: 20px; /* Reduzido de 28px para 20px */
+        font-size: 24px;
         font-family: 'TheSilverEditorial', serif;
         font-weight: normal;
         font-style: normal;
-        letter-spacing: 1.5px; /* Reduzido de 2.5px para 1.5px */
-        padding: 12px 20px; /* Reduzido de 20px 30px para 12px 20px */
-        text-align: center; /* Centraliza o texto */
-        width: auto; /* Largura automática para melhor centralização */
-        min-width: 160px; /* Reduzido de 200px para 160px */
-        color: #fff; /* Cor branca para contraste com fundo azul translúcido */
-        border-radius: 8px; /* Reduzido de 12px para 8px */
+        letter-spacing: 2px;
+        padding: 20px 30px;
+        text-align: center;
+        width: auto;
+        min-width: 250px;
+        color: #fff;
+        border-radius: 12px;
         transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         position: relative;
         overflow: hidden;
