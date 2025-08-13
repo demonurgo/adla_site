@@ -982,6 +982,20 @@ body:not(.menu-open) .testimonials-section {
     background-size: contain;
 }
 
+.logo-slide.linspiana {
+    background-image: url('../Logos/white/Linspiana.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.logo-slide.garantia {
+    background-image: url('../Logos/white/garantia.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 /* Menu Hambúrguer para Mobile */
 .menu-toggle {
     display: none;
