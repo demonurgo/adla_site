@@ -6,20 +6,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
     const mainNavUl = document.querySelector('.main-nav ul');
     
-    // Função para alternar o menu mobile
+    // Função para alternar o menu mobile com animação elegante
     function toggleMenu() {
-        mainNavUl.classList.toggle('active');
-        document.body.classList.toggle('menu-open');
-        
-        // Alterna a aparência do botão hambúrguer com animação simétrica
-        const spans = menuToggle.querySelectorAll('span');
-        
         if (mainNavUl.classList.contains('active')) {
-            // Ativa a classe CSS para formação X simétrica
-            menuToggle.classList.add('active');
-        } else {
-            // Remove a classe CSS para retornar ao estado hambúrguer
+            // Fechando menu - adiciona animação de saída
+            mainNavUl.classList.add('closing');
             menuToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            
+            // Remove classes após animação completar
+            setTimeout(() => {
+                mainNavUl.classList.remove('active', 'closing');
+            }, 600); // Duração da animação de fechamento
+        } else {
+            // Abrindo menu - adiciona classe ativa imediatamente
+            mainNavUl.classList.add('active');
+            menuToggle.classList.add('active');
+            document.body.classList.add('menu-open');
         }
     }
     
@@ -35,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Adiciona a classe active ao link clicado
             this.classList.add('active');
             
-            // Fecha o menu mobile se estiver aberto
+            // Fecha o menu mobile se estiver aberto com animação elegante
             if (mainNavUl.classList.contains('active')) {
                 toggleMenu();
             }
@@ -105,12 +108,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Verifica o redimensionamento da tela para gerenciar o menu
     window.addEventListener('resize', function() {
-        if (window.innerWidth > 576 && mainNavUl.classList.contains('active')) {
-            mainNavUl.classList.remove('active');
-            document.body.classList.remove('menu-open');
-            
-            // Restaura o estado do botão hambúrguer
-            menuToggle.classList.remove('active');
+        if (window.innerWidth > 991 && mainNavUl.classList.contains('active')) {
+            // Fecha elegantemente quando redimensiona para desktop
+            toggleMenu();
         }
     });
     
